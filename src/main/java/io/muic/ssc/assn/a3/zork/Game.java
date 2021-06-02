@@ -1,17 +1,17 @@
-package io.muic.ssc.lect.zork;
+package io.muic.ssc.assn.a3.zork;
 
 import java.util.List;
 import java.util.Scanner;
 
 public class Game {
-    public void run() {
-        private GameOutput output = new GameOutput();
-        private CommandParser parser = new CommandParser();
+    private GameOutput output = new GameOutput();
+    private CommandParser parser = new CommandParser();
 
+    public void run() {
         while (true) {
             Scanner in = new Scanner(System.in);
             String s = in.nextLine();
-            List<String> words = parser.parse(s)
+            List<String> words = parser.parse(s);
             output.println(s);
         }
     }

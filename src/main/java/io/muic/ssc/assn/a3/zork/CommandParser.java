@@ -1,11 +1,12 @@
-package io.muic.ssc.lect.zork;
+package io.muic.ssc.assn.a3.zork;
 
 import java.util.Arrays;
 import java.util.List;
 
 public class CommandParser {
+    // "attack with  weapon" => ["attack with", "weapon"]
     public List<String> parse(String stringInput) {
-        String[] strings = stringInput.split(" ");
+        String[] strings = stringInput.trim().split(" ");
         return Arrays.asList(strings);
     }
 }

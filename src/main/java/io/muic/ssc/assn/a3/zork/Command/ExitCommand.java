@@ -1,4 +1,6 @@
-package io.muic.ssc.lect.zork.Command;
+package io.muic.ssc.assn.a3.zork.Command;
+
+import io.muic.ssc.assn.a3.zork.Game;
 
 public class ExitCommand implements Command {
 
@@ -9,7 +11,7 @@ public class ExitCommand implements Command {
 
     @Override
     public String getCommand() {
-        return 'exit';
+        return "exit";
     }
 
     @Override

@@ -1,4 +1,6 @@
-package io.muic.ssc.lect.zork.Command;
+package io.muic.ssc.assn.a3.zork.Command;
+
+import io.muic.ssc.assn.a3.zork.Game;
 
 public interface Command {
     int numArgs();

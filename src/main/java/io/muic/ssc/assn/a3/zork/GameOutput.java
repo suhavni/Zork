@@ -1,4 +1,4 @@
-package io.muic.ssc.lect.zork;
+package io.muic.ssc.assn.a3.zork;
 
 public class GameOutput {
     public void println(String message) {
