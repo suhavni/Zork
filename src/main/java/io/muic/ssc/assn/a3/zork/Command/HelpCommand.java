@@ -9,11 +9,12 @@ public class HelpCommand extends Command {
 
     @Override
     public void execute(Game game, List<String> args) {
-        System.out.println("User requests for helo. These are the list of commands we have:");
-        System.out.printf("%-10s | %-25s\n", "Command", "Number of Arguments");
-        System.out.println("=================================");
+        game.getOutput().println("User requests for helo. These are the list of commands we have:");
+        game.getOutput().printf("Command", "Number of Arguments");
+        game.getOutput().println("----------------------------");
         for (String command : CommandFactory.getAllCommands()) {
-            System.out.printf("%-10s | %-25d\n", command, CommandFactory.getCommandType(command).getNumArgs());
+            game.getOutput().printf(command, ""+CommandFactory.getCommandType(command).getNumArgs());
         }
+        game.run();
     }
 }
