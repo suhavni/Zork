@@ -21,6 +21,8 @@ public class CommandParser {
     }
 
     // "attack with  weapon" => ["attack with", "weapon"]
+    // TODO: HANDLE invalid number of arguments
+    // TODO: HANDLE invalid commands (NULLPOINTEREXCEPTION)
     public List<String> parse(String stringInput) {
         String cleanedInput = stringInput.trim();
         String command = matchInputToCommand(cleanedInput);

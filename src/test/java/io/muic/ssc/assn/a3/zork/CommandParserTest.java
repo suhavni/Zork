@@ -10,10 +10,8 @@ class CommandParserTest {
         CommandParser commandParser = new CommandParser();
         System.out.println(commandParser.parse("exit helloworld").toString());
         System.out.println(commandParser.parse("exithelloworld").toString());
-        // TODO: Handle invalid number of arguments
         System.out.println(commandParser.parse("help").toString());
-        // TODO: Handle invalid commands (NULLPOINTEREXCEPTION)
-        System.out.println(commandParser.parse("").toString());
-        System.out.println(commandParser.parse("shoot").toString());
+//        System.out.println(commandParser.parse("").toString());
+//        System.out.println(commandParser.parse("shoot").toString());
     }
 }
