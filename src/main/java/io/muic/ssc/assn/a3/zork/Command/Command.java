@@ -4,10 +4,7 @@ import io.muic.ssc.assn.a3.zork.Game;
 
 import java.util.List;
 
-public interface Command {
-    int numArgs();
+public abstract class Command {
 
-    String getCommand();
-
-    void execute(Game game, List<String> args);
+    public abstract void execute(Game game, List<String> args);
 }
