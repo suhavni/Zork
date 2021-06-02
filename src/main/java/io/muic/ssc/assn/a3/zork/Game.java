@@ -1,9 +1,7 @@
 package io.muic.ssc.assn.a3.zork;
 
-import io.muic.ssc.assn.a3.zork.Command.Command;
 import io.muic.ssc.assn.a3.zork.Command.CommandType;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -17,11 +15,7 @@ public class Game {
             String s = in.nextLine();
             List<String> words = parser.parse(s);
             CommandType command = CommandFactory.getCommandType(words.get(0));
-            try {
-                command.getCommandClass().getConstructor().newInstance().execute(this, words.subList(1, words.size()));
-            } catch (InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
-                e.printStackTrace();
-            }
+            command.getCommandInstance().execute(this, words.subList(1, words.size()));
         }
     }
 
