@@ -1,6 +1,6 @@
 package io.muic.ssc.assn.a3.zork;
 
-import io.muic.ssc.assn.a3.zork.Command.CommandType;
+import io.muic.ssc.assn.a3.zork.command.CommandType;
 
 import java.util.*;
 

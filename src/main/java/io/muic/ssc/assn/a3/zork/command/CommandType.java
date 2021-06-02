@@ -1,4 +1,4 @@
-package io.muic.ssc.assn.a3.zork.Command;
+package io.muic.ssc.assn.a3.zork.command;
 
 import java.lang.reflect.InvocationTargetException;
 
