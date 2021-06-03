@@ -1,10 +1,12 @@
 package io.muic.ssc.assn.a3.zork.command;
 
+import io.muic.ssc.assn.a3.zork.command.type.*;
+
 import java.lang.reflect.InvocationTargetException;
 
 public enum CommandType {
-    // TODO: ADD more commands
-    // TODO: drop, attack with, go {direction}, map, autopilot {file},
+//     TODO: ADD more commands
+//     TODO: drop, attack with, go {direction}, map, autopilot {file},
     // TODO: play {map-name}, save {saved-point-name}, load {saved-point-name}
     EXIT(0, "exit", ExitCommand.class),
     HELP(0, "help", HelpCommand.class),

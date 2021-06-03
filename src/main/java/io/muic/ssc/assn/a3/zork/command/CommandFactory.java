@@ -1,4 +1,4 @@
-package io.muic.ssc.assn.a3.zork;
+package io.muic.ssc.assn.a3.zork.command;
 
 import io.muic.ssc.assn.a3.zork.command.CommandType;
 

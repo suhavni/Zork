@@ -1,7 +1,6 @@
-package io.muic.ssc.assn.a3.zork;
+package io.muic.ssc.assn.a3.zork.command;
 
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,8 +15,7 @@ public class CommandParser {
 
     // "attack with  weapon" => ["attack with", "weapon"]
     // TODO: HANDLE invalid number of arguments
-    // TODO: HANDLE
-    //  invalid commands (NULLPOINTEREXCEPTION)
+    // TODO: HANDLE invalid commands (NULLPOINTEREXCEPTION)
     public List<String> parse(String stringInput) {
         String cleanedInput = stringInput.trim();
         String command = matchInputToCommand(cleanedInput);

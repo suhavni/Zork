@@ -1,7 +1,5 @@
 package io.muic.ssc.assn.a3.zork;
 
-import io.muic.ssc.assn.a3.zork.item.Item;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -10,6 +8,8 @@ public class Player {
     int hp;
     int attack;
     int defense;
+    int inventorySpaceTaken;
+    int inventoryCapacity;
 
     Map<String, Integer> inventory;
 
@@ -20,6 +20,8 @@ public class Player {
         hp = maxHp;
         attack = 200;
         defense = 100;
+        inventorySpaceTaken = 0;
+        inventoryCapacity = 10;
         this.game = game;
         inventory = new HashMap<>();
     }
@@ -48,12 +50,24 @@ public class Player {
     // TODO: update accordingly
     public void addItemToInventory(String item) {
 //        System.out.println("in inventory");
-        inventory.put(item, inventory.getOrDefault(item, 0) + 1);
+        if (inventorySpaceTaken < inventoryCapacity) {
+            inventorySpaceTaken++;
+            inventory.put(item, inventory.getOrDefault(item, 0) + 1);
+        } else {
+            game.getOutput().println("You have too many things in your inventory. Please drop somethng.");
+        }
     }
 
     public void printInventory() {
         for (String item : inventory.keySet()) {
             game.getOutput().printf(item, "" + inventory.get(item));
         }
+    }
+
+    public boolean carriesItem(String item) { return inventory.containsKey(item); }
+
+    public void removeItemFromInventory(String item) {
+        inventory.put(item, inventory.get(item) - 1);
+        if (inventory.get(item) == 0) { inventory.remove(item); }
     }
 }

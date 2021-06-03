@@ -1,8 +1,7 @@
 package io.muic.ssc.assn.a3.zork;
 
+import io.muic.ssc.assn.a3.zork.command.CommandParser;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class CommandParserTest {
     @Test

@@ -1,13 +1,14 @@
-package io.muic.ssc.assn.a3.zork.command;
+package io.muic.ssc.assn.a3.zork.command.type;
 
 import io.muic.ssc.assn.a3.zork.Game;
+import io.muic.ssc.assn.a3.zork.command.Command;
 
 import java.util.HashMap;
 import java.util.List;
 
 public class InfoCommand extends Command {
     @Override
-//     TODO: UPDATE this
+    // TODO: UPDATE this
     public void execute(Game game, List<String> args) {
         // TODO: in case there's extra player stats.
         game.getOutput().println("PLAYER STATS:");
