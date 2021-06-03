@@ -20,6 +20,5 @@ public class InfoCommand extends Command {
         game.getPlayer().printInventory();
         // TODO: ROOM STATS
         // TODO: Monster stat, items stat, doors, etc
-        game.run();
     }
 }

@@ -15,6 +15,5 @@ public class HelpCommand extends Command {
         for (String command : CommandFactory.getAllCommands()) {
             game.getOutput().printf(command, ""+CommandFactory.getCommandType(command).getNumArgs());
         }
-        game.run();
     }
 }

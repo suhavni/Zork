@@ -11,20 +11,29 @@ public class Game {
     private CommandParser parser;
     private Player player;
     private Room currentRoom;
+    private Scanner scanner;
+    private boolean playingGame;
 
     public Game() {
+        scanner = new Scanner(System.in);
         output = new GameOutput();
         parser = new CommandParser();
         player = new Player(this);
-        System.out.println("Initializing new Zork game");
+        playingGame = true;
+        output.println("Initializing new Zork game");
+        // TODO: FIX this
+        currentRoom = new Room() {
+
+        };
     }
 
     public void run() {
-        Scanner in = new Scanner(System.in);
-        String s = in.nextLine();
-        List<String> words = parser.parse(s);
-        CommandType command = CommandFactory.getCommandType(words.get(0));
-        command.getCommandInstance().execute(this, words.subList(1, words.size()));
+        while (playingGame) {
+            String input = scanner.nextLine();
+            List<String> words = parser.parse(input);
+            CommandType command = CommandFactory.getCommandType(words.get(0));
+            command.getCommandInstance().execute(this, words.subList(1, words.size()));
+        }
     }
 
     public GameOutput getOutput() {
@@ -32,12 +41,21 @@ public class Game {
     }
 
     public void exit() {
+        scanner.close();
         System.exit(55555);
     }
 
-    public Player getPlayer() { return player; }
+    public Player getPlayer() {
+//        System.out.println("got player");
+        return player;
+    }
 
     public Room getCurrentRoom() {
         return currentRoom;
+    }
+
+    public void quit() {
+//        scanner.close();
+        playingGame = false;
     }
 }
