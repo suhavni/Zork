@@ -1,5 +1,6 @@
 package io.muic.ssc.assn.a3.zork;
 
+
 import io.muic.ssc.assn.a3.zork.command.CommandFactory;
 import io.muic.ssc.assn.a3.zork.command.CommandParser;
 import io.muic.ssc.assn.a3.zork.command.CommandType;
@@ -10,31 +11,40 @@ import java.util.Scanner;
 
 public class Game {
     private GameOutput output;
-    private CommandParser parser;
     private Player player;
     private Room currentRoom;
-    private Scanner scanner;
     private boolean playingGame;
+    private Scanner scanner = new Scanner(System.in);
 
     public Game() {
-        scanner = new Scanner(System.in);
         output = new GameOutput();
-        parser = new CommandParser();
-        player = new Player(this);
+        playingGame = false;
+    }
+
+    public void play(String mapName) {
         playingGame = true;
-        output.println("Initializing new Zork game");
         // TODO: FIX this
+        player = new Player(this);
         currentRoom = new Room() {
 
         };
+        // TODO: MAP
     }
 
     public void run() {
-        while (playingGame) {
-            String input = scanner.nextLine();
-            List<String> words = parser.parse(input);
-            CommandType command = CommandFactory.getCommandType(words.get(0));
-            command.getCommandInstance().execute(this, words.subList(1, words.size()));
+        CommandParser parser = new CommandParser();
+        String input;
+        List<String> words;
+        CommandType command;
+        while (true) {
+            input = scanner.nextLine();
+            words = parser.parse(input, playingGame);
+            try {
+                command = CommandFactory.getCommandType(words.get(0));
+                command.getCommandInstance().execute(this, words.subList(1, words.size()));
+            } catch (NullPointerException e) {
+                output.println("Command does not exist");
+            }
         }
     }
 
@@ -48,7 +58,6 @@ public class Game {
     }
 
     public Player getPlayer() {
-//        System.out.println("got player");
         return player;
     }
 
@@ -60,4 +69,6 @@ public class Game {
 //        scanner.close();
         playingGame = false;
     }
+
+    public boolean isPlayingGame() { return playingGame; }
 }

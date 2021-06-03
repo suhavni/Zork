@@ -12,11 +12,8 @@ public class DropCommand extends Command {
     public void execute(Game game, List<String> args) {
         String item = args.get(0);
         if (game.getPlayer().carriesItem(item)) {
-            System.out.println("player carries item");
             ItemFactory.getItemType(item).getItemInstance().useItem(game);
-            System.out.println("player used item");
             game.getPlayer().removeItemFromInventory(item);
-            System.out.println("player dropped item");
         } else {
             game.getOutput().println("Item not found in inventory...");
         }

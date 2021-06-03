@@ -54,7 +54,6 @@ public class Player {
 
     // TODO: update accordingly
     public void addItemToInventory(String item) {
-//        System.out.println("in inventory");
         if (inventorySpaceTaken < inventoryCapacity) {
             inventorySpaceTaken++;
             inventory.put(item, inventory.getOrDefault(item, 0) + 1);

@@ -7,21 +7,26 @@ import java.lang.reflect.InvocationTargetException;
 public enum CommandType {
 //     TODO: ADD more commands
 //     TODO: attack with, go {direction}, map, autopilot {file},
-    // TODO: play {map-name}, save {saved-point-name}, load {saved-point-name}
-    EXIT(0, "exit", ExitCommand.class),
-    HELP(0, "help", HelpCommand.class),
-    INFO(0, "info", InfoCommand.class),
-    QUIT(0, "quit", QuitCommand.class),
-    TAKE(1, "take", TakeCommand.class),
-    DROP(1, "drop", DropCommand.class);
+    // TODO: save {saved-point-name}, load {saved-point-name}
+    EXIT(false, true,0, "exit", ExitCommand.class),
+    HELP(true, true,0, "help", HelpCommand.class),
+    INFO(true, false, 0, "info", InfoCommand.class),
+    QUIT(true, false, 0, "quit", QuitCommand.class),
+    TAKE(true, false,1, "take", TakeCommand.class),
+    DROP(true, false, 1, "drop", DropCommand.class),
+    PLAY(false, true, 1, "play", PlayCommand.class);
 
     int numArgs;
     String command;
     Command commandInstance;
+    boolean duringGame;
+    boolean startOfGame;
 
-    CommandType(int numArgs, String command, Class<? extends Command> commandClass) {
+    CommandType(boolean duringGame, boolean startOfGame, int numArgs, String command, Class<? extends Command> commandClass) {
         this.numArgs = numArgs;
         this.command = command;
+        this.duringGame = duringGame;
+        this.startOfGame = startOfGame;
         try {
             this.commandInstance = commandClass.getConstructor().newInstance();
         } catch (InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
@@ -32,5 +37,7 @@ public enum CommandType {
     public int getNumArgs() { return numArgs; }
     public String getCommand() { return command; }
     public Command getCommandInstance() { return commandInstance; }
+    public boolean isDuringGame() { return duringGame; }
+    public boolean isStartOfGame() { return startOfGame; }
 
 }
