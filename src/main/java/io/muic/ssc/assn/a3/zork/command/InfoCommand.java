@@ -2,6 +2,7 @@ package io.muic.ssc.assn.a3.zork.command;
 
 import io.muic.ssc.assn.a3.zork.Game;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class InfoCommand extends Command {
@@ -14,6 +15,9 @@ public class InfoCommand extends Command {
         game.getOutput().printf("Max HP:", "" + game.getPlayer().getMaxHp());
         game.getOutput().printf("Attack Power:", "" + game.getPlayer().getAttack());
         game.getOutput().printf("Defense:", "" + game.getPlayer().getDefense());
+
+        game.getOutput().println("INVENTORY:");
+        game.getPlayer().printInventory();
         // TODO: ROOM STATS
         // TODO: Monster stat, items stat, doors, etc
         game.run();

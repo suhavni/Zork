@@ -1,6 +1,7 @@
 package io.muic.ssc.assn.a3.zork;
 
 import io.muic.ssc.assn.a3.zork.command.CommandType;
+import io.muic.ssc.assn.a3.zork.room.Room;
 
 import java.util.List;
 import java.util.Scanner;
@@ -9,6 +10,7 @@ public class Game {
     private GameOutput output;
     private CommandParser parser;
     private Player player;
+    private Room currentRoom;
 
     public Game() {
         output = new GameOutput();
@@ -33,7 +35,9 @@ public class Game {
         System.exit(55555);
     }
 
-    public Player getPlayer() {
-        return player;
+    public Player getPlayer() { return player; }
+
+    public Room getCurrentRoom() {
+        return currentRoom;
     }
 }
