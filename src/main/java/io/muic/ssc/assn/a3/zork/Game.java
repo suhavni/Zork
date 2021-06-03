@@ -8,11 +8,12 @@ import java.util.Scanner;
 public class Game {
     private GameOutput output;
     private CommandParser parser;
+    private Player player;
 
     public Game() {
         output = new GameOutput();
         parser = new CommandParser();
-
+        player = new Player(this);
         System.out.println("Initializing new Zork game");
     }
 
@@ -30,5 +31,9 @@ public class Game {
 
     public void exit() {
         System.exit(55555);
+    }
+
+    public Player getPlayer() {
+        return player;
     }
 }

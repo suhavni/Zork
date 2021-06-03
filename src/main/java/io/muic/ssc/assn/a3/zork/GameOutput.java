@@ -6,6 +6,6 @@ public class GameOutput {
     }
 
     public void printf(String arg1, String arg2) {
-        System.out.printf("%-10s | %-25s\n", arg1, arg2);
+        System.out.printf("%-15s | %-25s\n", arg1, arg2);
     }
 }
