@@ -42,6 +42,11 @@ public class Player {
         if (hp <= 0) { dies(); }
     }
 
+    public void updateMaxHp(int percent) {
+        maxHp += maxHp*(percent/100);
+        hp += hp*(percent/100);
+    }
+
     public void dies() {
         game.getOutput().println("Unfortunately, player has died.");
         // TODO: Go back to last saved checkpoint vs. end game
@@ -64,7 +69,9 @@ public class Player {
         }
     }
 
-    public boolean carriesItem(String item) { return inventory.containsKey(item); }
+    public boolean carriesItem(String item) {
+        return inventory.containsKey(item);
+    }
 
     public void removeItemFromInventory(String item) {
         inventory.put(item, inventory.get(item) - 1);
