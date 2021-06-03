@@ -43,8 +43,8 @@ public class Player {
     }
 
     public void updateMaxHp(int percent) {
-        maxHp += maxHp*(percent/100);
-        hp += hp*(percent/100);
+        maxHp += maxHp*percent/100;
+        hp += hp*percent/100;
     }
 
     public void dies() {

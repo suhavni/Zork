@@ -1,5 +1,7 @@
 package io.muic.ssc.assn.a3.zork.item;
 
+import io.muic.ssc.assn.a3.zork.item.type.DefaultItem;
+
 import java.lang.reflect.InvocationTargetException;
 
 public enum ItemType {
