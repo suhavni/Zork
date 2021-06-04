@@ -10,9 +10,10 @@ public class DropCommand extends Command {
     // TODO: spagetti code, edit this
     public void execute(List<String> args) {
         String item = args.get(0);
-        if (game.getPlayer().carriesItem(item)) {
+        System.out.println("Player chooses to drop item");
+        if (game.getCheckPoint().getPlayer().carriesItem(item)) {
             ItemFactory.getItemType(item).getItemInstance().useItem();
-            game.getPlayer().removeItemFromInventory(item);
+            game.getCheckPoint().getPlayer().removeItemFromInventory(item);
         } else {
             game.getOutput().println("Item not found in inventory...");
         }

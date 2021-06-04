@@ -10,13 +10,16 @@ public class InfoCommand extends Command {
     public void execute(List<String> args) {
         // TODO: in case there's extra player stats.
         game.getOutput().println("PLAYER STATS:");
-        game.getOutput().printf("HP:", "" + game.getPlayer().getHp());
-        game.getOutput().printf("Max HP:", "" + game.getPlayer().getMaxHp());
-        game.getOutput().printf("Attack Power:", "" + game.getPlayer().getAttack());
-        game.getOutput().printf("Defense:", "" + game.getPlayer().getDefense());
+        game.getOutput().printf("HP:", "" + game.getCheckPoint().getPlayer().getHp());
+        game.getOutput().printf("Max HP:", "" + game.getCheckPoint().getPlayer().getMaxHp());
+        game.getOutput().printf("Attack Power:", "" + game.getCheckPoint().getPlayer().getAttack());
+        game.getOutput().printf("Defense:", "" + game.getCheckPoint().getPlayer().getDefense());
 
         game.getOutput().println("INVENTORY:");
-        game.getPlayer().printInventory();
+        game.getCheckPoint().getPlayer().printInventory();
+
+        game.getOutput().println("SAVED CHECKPOINTS");
+        game.getOutput().println(game.getSavedCheckPoints().toString());
         // TODO: ROOM STATS
         // TODO: Monster stat, items stat, doors, etc
     }

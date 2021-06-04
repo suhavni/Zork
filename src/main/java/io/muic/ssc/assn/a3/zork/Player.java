@@ -24,6 +24,20 @@ public class Player {
         inventory = new HashMap<>();
     }
 
+    public Player(Player save) {
+        this.maxHp = save.maxHp;
+        this.hp = save.hp;
+        this.attack = save.attack;
+        this.defense = save.defense;
+        this.inventorySpaceTaken = save.inventorySpaceTaken;
+        this.inventoryCapacity = save.inventoryCapacity;
+        this.inventory = new HashMap<>();
+        for (String item : save.inventory.keySet()) {
+            this.inventory.put(item, save.inventory.get(item));
+        }
+
+    }
+
     public int getMaxHp() { return maxHp; }
     public int getHp() { return hp; }
 

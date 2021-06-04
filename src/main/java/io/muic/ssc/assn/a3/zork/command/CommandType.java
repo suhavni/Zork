@@ -14,6 +14,8 @@ public enum CommandType {
     QUIT(true, false, 0, "quit", QuitCommand.class),
     TAKE(true, false,1, "take", TakeCommand.class),
     DROP(true, false, 1, "drop", DropCommand.class),
+    SAVE(true, false, 1, "save", SaveCommand.class),
+    LOAD(true, false, 1, "load", LoadCommand.class),
     PLAY(false, true, 1, "play", PlayCommand.class);
 
     int numArgs;

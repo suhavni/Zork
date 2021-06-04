@@ -6,17 +6,16 @@ import io.muic.ssc.assn.a3.zork.command.CommandParser;
 import io.muic.ssc.assn.a3.zork.command.CommandType;
 import io.muic.ssc.assn.a3.zork.room.Room;
 
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public enum Game {
     INSTANCE;
 
     private GameOutput output;
-    private Player player;
-    private Room currentRoom;
     private boolean playingGame;
     private Scanner scanner = new Scanner(System.in);
+    CheckPoint checkPoint;
+    Map<String, CheckPoint> savedCheckPoints;
 
     Game() {
         output = new GameOutput();
@@ -25,12 +24,9 @@ public enum Game {
 
     public void play(String mapName) {
         playingGame = true;
+        savedCheckPoints = new HashMap<>();
         // TODO: FIX this
-        player = new Player();
-        currentRoom = new Room() {
-
-        };
-        // TODO: MAP
+        checkPoint = new CheckPoint(mapName);
     }
 
     public void run() {
@@ -59,12 +55,8 @@ public enum Game {
         System.exit(55555);
     }
 
-    public Player getPlayer() {
-        return player;
-    }
-
-    public Room getCurrentRoom() {
-        return currentRoom;
+    public CheckPoint getCheckPoint() {
+        return checkPoint;
     }
 
     public void quit() {
@@ -73,4 +65,18 @@ public enum Game {
     }
 
     public boolean isPlayingGame() { return playingGame; }
+
+    public void save(String checkPointName) {
+        savedCheckPoints.put(checkPointName, new CheckPoint(checkPoint));
+    }
+
+    public void load(String checkPointName) {
+        if (savedCheckPoints.containsKey(checkPointName)) {
+            checkPoint = new CheckPoint(savedCheckPoints.get(checkPointName));
+        } else {
+            output.println("No such checkpoint found");
+        }
+    }
+
+    public Set<String> getSavedCheckPoints() { return savedCheckPoints.keySet(); }
 }

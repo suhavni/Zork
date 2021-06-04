@@ -6,6 +6,6 @@ public class DefaultItem extends Item {
     @Override
     // TODO: update
     public void useItem() {
-        game.getPlayer().updateMaxHp(10);
+        game.getCheckPoint().getPlayer().updateMaxHp(10);
     }
 }
