@@ -8,16 +8,16 @@ import java.util.List;
 public class InfoCommand extends Command {
     @Override
     // TODO: UPDATE this
-    public void execute(Game game, List<String> args) {
+    public void execute(List<String> args) {
         // TODO: in case there's extra player stats.
-        game.getOutput().println("PLAYER STATS:");
-        game.getOutput().printf("HP:", "" + game.getPlayer().getHp());
-        game.getOutput().printf("Max HP:", "" + game.getPlayer().getMaxHp());
-        game.getOutput().printf("Attack Power:", "" + game.getPlayer().getAttack());
-        game.getOutput().printf("Defense:", "" + game.getPlayer().getDefense());
+        Game.INSTANCE.getOutput().println("PLAYER STATS:");
+        Game.INSTANCE.getOutput().printf("HP:", "" + Game.INSTANCE.getPlayer().getHp());
+        Game.INSTANCE.getOutput().printf("Max HP:", "" + Game.INSTANCE.getPlayer().getMaxHp());
+        Game.INSTANCE.getOutput().printf("Attack Power:", "" + Game.INSTANCE.getPlayer().getAttack());
+        Game.INSTANCE.getOutput().printf("Defense:", "" + Game.INSTANCE.getPlayer().getDefense());
 
-        game.getOutput().println("INVENTORY:");
-        game.getPlayer().printInventory();
+        Game.INSTANCE.getOutput().println("INVENTORY:");
+        Game.INSTANCE.getPlayer().printInventory();
         // TODO: ROOM STATS
         // TODO: Monster stat, items stat, doors, etc
     }

@@ -9,13 +9,13 @@ import java.util.List;
 public class DropCommand extends Command {
     @Override
     // TODO: spagetti code, edit this
-    public void execute(Game game, List<String> args) {
+    public void execute(List<String> args) {
         String item = args.get(0);
-        if (game.getPlayer().carriesItem(item)) {
-            ItemFactory.getItemType(item).getItemInstance().useItem(game);
-            game.getPlayer().removeItemFromInventory(item);
+        if (Game.INSTANCE.getPlayer().carriesItem(item)) {
+            ItemFactory.getItemType(item).getItemInstance().useItem(Game.INSTANCE);
+            Game.INSTANCE.getPlayer().removeItemFromInventory(item);
         } else {
-            game.getOutput().println("Item not found in inventory...");
+            Game.INSTANCE.getOutput().println("Item not found in inventory...");
         }
     }
 }

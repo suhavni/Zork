@@ -9,14 +9,16 @@ import io.muic.ssc.assn.a3.zork.room.Room;
 import java.util.List;
 import java.util.Scanner;
 
-public class Game {
+public enum Game {
+    INSTANCE;
+
     private GameOutput output;
     private Player player;
     private Room currentRoom;
     private boolean playingGame;
     private Scanner scanner = new Scanner(System.in);
 
-    public Game() {
+    Game() {
         output = new GameOutput();
         playingGame = false;
     }
@@ -24,7 +26,7 @@ public class Game {
     public void play(String mapName) {
         playingGame = true;
         // TODO: FIX this
-        player = new Player(this);
+        player = new Player();
         currentRoom = new Room() {
 
         };
@@ -41,7 +43,7 @@ public class Game {
             words = parser.parse(input, playingGame);
             try {
                 command = CommandFactory.getCommandType(words.get(0));
-                command.getCommandInstance().execute(this, words.subList(1, words.size()));
+                command.getCommandInstance().execute(words.subList(1, words.size()));
             } catch (NullPointerException e) {
                 output.println("Command does not exist");
             }

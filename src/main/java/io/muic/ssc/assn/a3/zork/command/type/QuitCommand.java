@@ -8,8 +8,8 @@ import java.util.List;
 public class QuitCommand extends Command {
 
     @Override
-    public void execute(Game game, List<String> args) {
-        game.getOutput().println("Quitting current Zork session");
-        game.quit();
+    public void execute(List<String> args) {
+        Game.INSTANCE.getOutput().println("Quitting current Zork session");
+        Game.INSTANCE.quit();
     }
 }

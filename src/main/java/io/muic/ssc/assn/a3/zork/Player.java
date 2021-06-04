@@ -13,16 +13,13 @@ public class Player {
 
     Map<String, Integer> inventory;
 
-    Game game;
-
-    public Player(Game game) {
+    public Player() {
         maxHp = 1000;
         hp = maxHp;
         attack = 200;
         defense = 100;
         inventorySpaceTaken = 0;
         inventoryCapacity = 10;
-        this.game = game;
         inventory = new HashMap<>();
     }
 
@@ -48,7 +45,7 @@ public class Player {
     }
 
     public void dies() {
-        game.getOutput().println("Unfortunately, player has died.");
+        Game.INSTANCE.getOutput().println("Unfortunately, player has died.");
         // TODO: Go back to last saved checkpoint vs. end game
     }
 
@@ -58,13 +55,13 @@ public class Player {
             inventorySpaceTaken++;
             inventory.put(item, inventory.getOrDefault(item, 0) + 1);
         } else {
-            game.getOutput().println("You have too many things in your inventory. Please drop somethng.");
+            Game.INSTANCE.getOutput().println("You have too many things in your inventory. Please drop somethng.");
         }
     }
 
     public void printInventory() {
         for (String item : inventory.keySet()) {
-            game.getOutput().printf(item, "" + inventory.get(item));
+            Game.INSTANCE.getOutput().printf(item, "" + inventory.get(item));
         }
     }
 

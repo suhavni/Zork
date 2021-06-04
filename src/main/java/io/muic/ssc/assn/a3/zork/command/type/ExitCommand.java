@@ -8,8 +8,8 @@ import java.util.List;
 public class ExitCommand extends Command {
 
     @Override
-    public void execute(Game game, List<String> args) {
-        game.getOutput().println("Exiting Zork... Bye bye");
-        game.exit();
+    public void execute(List<String> args) {
+        Game.INSTANCE.getOutput().println("Exiting Zork... Bye bye");
+        Game.INSTANCE.exit();
     }
 }
