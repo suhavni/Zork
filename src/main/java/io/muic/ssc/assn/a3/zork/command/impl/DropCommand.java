@@ -3,9 +3,8 @@ package io.muic.ssc.assn.a3.zork.command.impl;
 import io.muic.ssc.assn.a3.zork.command.Command;
 import io.muic.ssc.assn.a3.zork.item.ItemFactory;
 
-import java.util.List;
-
 public class DropCommand extends Command {
+
     @Override
     // TODO: spagetti code, edit this
     public void execute(String arg) {
