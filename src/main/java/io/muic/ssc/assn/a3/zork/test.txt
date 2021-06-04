@@ -1,0 +1,8 @@
+info
+help
+take pencil
+take eraser
+drop pen
+info
+save cppp
+quit

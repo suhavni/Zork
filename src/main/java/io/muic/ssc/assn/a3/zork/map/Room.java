@@ -1,4 +1,4 @@
-package io.muic.ssc.assn.a3.zork.room;
+package io.muic.ssc.assn.a3.zork.map;
 
 public abstract class Room {
     // TODO: implement this

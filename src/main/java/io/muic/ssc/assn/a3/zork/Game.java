@@ -14,6 +14,8 @@ public enum Game {
     private GameOutput output;
     // Whether a Zork game is being played
     private boolean playingGame;
+
+    private CommandParser parser;
     // Scanner for user input
     private Scanner scanner = new Scanner(System.in);
     // The game's current state
@@ -29,6 +31,7 @@ public enum Game {
     Game() {
         output = new GameOutput();
         playingGame = false;
+        parser = new CommandParser();
         savedCheckPoints = new HashMap<>();
     }
 
@@ -51,20 +54,23 @@ public enum Game {
      * to use the EXIT command
      */
     public void run() {
-        CommandParser parser = new CommandParser();
-        String input;
-        List<String> words;
-        CommandType command;
-        while (true) {
-            input = scanner.nextLine();
-            words = parser.parse(input, playingGame);
-            try {
-                command = CommandFactory.getCommandType(words.get(0));
-                command.getCommandInstance().execute(words.get(1));
-            } catch (NullPointerException e) {
-                output.println("Command does not exist");
-            }
+        String latestCommand = "";
+        while (!latestCommand.equals("exit")) {
+            latestCommand = runHelper(scanner);
         }
+    }
+
+    public String  runHelper(Scanner customScanner) {
+        String input = customScanner.nextLine();
+        List<String> words = parser.parse(input, playingGame);
+        try {
+            CommandType command = CommandFactory.getCommandType(words.get(0));
+            command.getCommandInstance().execute(words.get(1));
+            return input;
+        } catch (NullPointerException e) {
+            output.println("Command does not exist");
+        }
+        return input;
     }
 
     /**

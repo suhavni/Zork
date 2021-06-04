@@ -1,6 +1,6 @@
 package io.muic.ssc.assn.a3.zork;
 
-import io.muic.ssc.assn.a3.zork.room.Room;
+import io.muic.ssc.assn.a3.zork.map.Room;
 
 public class GameState {
     // TODO: private GameMap;
