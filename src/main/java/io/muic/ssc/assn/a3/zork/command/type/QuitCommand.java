@@ -9,7 +9,7 @@ public class QuitCommand extends Command {
 
     @Override
     public void execute(List<String> args) {
-        Game.INSTANCE.getOutput().println("Quitting current Zork session");
-        Game.INSTANCE.quit();
+        game.getOutput().println("Quitting current Zork session");
+        game.quit();
     }
 }

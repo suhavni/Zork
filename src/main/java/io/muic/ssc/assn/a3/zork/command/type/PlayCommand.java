@@ -9,7 +9,7 @@ public class PlayCommand extends Command {
 
     @Override
     public void execute(List<String> args) {
-        Game.INSTANCE.getOutput().println("Initializing new Zork Game!!!");
-        Game.INSTANCE.play(args.get(0));
+        game.getOutput().println("Initializing new Zork Game!!!");
+        game.play(args.get(0));
     }
 }

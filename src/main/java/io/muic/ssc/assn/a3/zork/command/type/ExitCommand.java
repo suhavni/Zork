@@ -9,7 +9,7 @@ public class ExitCommand extends Command {
 
     @Override
     public void execute(List<String> args) {
-        Game.INSTANCE.getOutput().println("Exiting Zork... Bye bye");
-        Game.INSTANCE.exit();
+        game.getOutput().println("Exiting Zork... Bye bye");
+        game.exit();
     }
 }

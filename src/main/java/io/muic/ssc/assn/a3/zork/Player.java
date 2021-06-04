@@ -12,6 +12,7 @@ public class Player {
     int inventoryCapacity;
 
     Map<String, Integer> inventory;
+    Game game = Game.INSTANCE;
 
     public Player() {
         maxHp = 1000;
@@ -45,7 +46,7 @@ public class Player {
     }
 
     public void dies() {
-        Game.INSTANCE.getOutput().println("Unfortunately, player has died.");
+        game.getOutput().println("Unfortunately, player has died.");
         // TODO: Go back to last saved checkpoint vs. end game
     }
 
@@ -55,13 +56,13 @@ public class Player {
             inventorySpaceTaken++;
             inventory.put(item, inventory.getOrDefault(item, 0) + 1);
         } else {
-            Game.INSTANCE.getOutput().println("You have too many things in your inventory. Please drop somethng.");
+            game.getOutput().println("You have too many things in your inventory. Please drop somethng.");
         }
     }
 
     public void printInventory() {
         for (String item : inventory.keySet()) {
-            Game.INSTANCE.getOutput().printf(item, "" + inventory.get(item));
+            game.getOutput().printf(item, "" + inventory.get(item));
         }
     }
 

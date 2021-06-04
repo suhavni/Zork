@@ -11,11 +11,11 @@ public class DropCommand extends Command {
     // TODO: spagetti code, edit this
     public void execute(List<String> args) {
         String item = args.get(0);
-        if (Game.INSTANCE.getPlayer().carriesItem(item)) {
-            ItemFactory.getItemType(item).getItemInstance().useItem(Game.INSTANCE);
-            Game.INSTANCE.getPlayer().removeItemFromInventory(item);
+        if (game.getPlayer().carriesItem(item)) {
+            ItemFactory.getItemType(item).getItemInstance().useItem();
+            game.getPlayer().removeItemFromInventory(item);
         } else {
-            Game.INSTANCE.getOutput().println("Item not found in inventory...");
+            game.getOutput().println("Item not found in inventory...");
         }
     }
 }
