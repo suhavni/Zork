@@ -18,9 +18,6 @@ public class GameState {
     public GameState(String mapName) {
         // TODO: GameMap game = MAP_LOOKUP.get(mapName);
         this.player = new Player();
-        currentRoom = new Room() {
-
-        };
     }
 
     /**
