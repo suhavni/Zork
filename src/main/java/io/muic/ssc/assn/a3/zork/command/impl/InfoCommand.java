@@ -7,7 +7,7 @@ import java.util.List;
 public class InfoCommand extends Command {
     @Override
     // TODO: UPDATE this
-    public void execute(List<String> args) {
+    public void execute(String arg) {
         // TODO: in case there's extra player stats.
         game.getOutput().println("PLAYER STATS:");
         game.getOutput().printf("HP:", "" + game.getCheckPoint().getPlayer().getHp());

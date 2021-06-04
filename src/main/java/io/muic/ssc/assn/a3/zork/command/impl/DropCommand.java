@@ -8,12 +8,11 @@ import java.util.List;
 public class DropCommand extends Command {
     @Override
     // TODO: spagetti code, edit this
-    public void execute(List<String> args) {
-        String item = args.get(0);
+    public void execute(String arg) {
         System.out.println("Player chooses to drop item");
-        if (game.getCheckPoint().getPlayer().carriesItem(item)) {
-            ItemFactory.getItemType(item).getItemInstance().useItem();
-            game.getCheckPoint().getPlayer().removeItemFromInventory(item);
+        if (game.getCheckPoint().getPlayer().carriesItem(arg)) {
+            ItemFactory.getItemType(arg).getItemInstance().useItem();
+            game.getCheckPoint().getPlayer().removeItemFromInventory(arg);
         } else {
             game.getOutput().println("Item not found in inventory...");
         }

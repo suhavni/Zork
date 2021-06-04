@@ -6,8 +6,8 @@ import java.util.List;
 
 public class SaveCommand extends Command {
     @Override
-    public void execute(List<String> args) {
-        game.getOutput().println("Saving current state to checkpoint: " + args.get(0));
-        game.save(args.get(0));
+    public void execute(String arg) {
+        game.getOutput().println("Saving current state to checkpoint: " + arg);
+        game.save(arg);
     }
 }

@@ -7,7 +7,7 @@ import java.util.List;
 public class QuitCommand extends Command {
 
     @Override
-    public void execute(List<String> args) {
+    public void execute(String arg) {
         game.getOutput().println("Quitting current Zork session");
         game.quit();
     }

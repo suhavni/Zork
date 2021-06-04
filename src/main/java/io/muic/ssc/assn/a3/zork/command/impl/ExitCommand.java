@@ -7,7 +7,7 @@ import java.util.List;
 public class ExitCommand extends Command {
 
     @Override
-    public void execute(List<String> args) {
+    public void execute(String arg) {
         game.getOutput().println("Exiting Zork... Bye bye");
         game.exit();
     }

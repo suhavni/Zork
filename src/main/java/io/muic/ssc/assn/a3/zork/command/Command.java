@@ -7,5 +7,5 @@ import java.util.List;
 
 public abstract class Command {
     protected Game game = Game.INSTANCE;
-    public abstract void execute(List<String> args);
+    public abstract void execute(String arg);
 }

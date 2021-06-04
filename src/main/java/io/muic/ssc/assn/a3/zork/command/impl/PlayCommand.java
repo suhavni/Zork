@@ -7,8 +7,8 @@ import java.util.List;
 public class PlayCommand extends Command {
 
     @Override
-    public void execute(List<String> args) {
+    public void execute(String arg) {
         game.getOutput().println("Initializing new Zork Game!!!");
-        game.play(args.get(0));
+        game.play(arg);
     }
 }

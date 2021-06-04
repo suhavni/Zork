@@ -4,7 +4,6 @@ package io.muic.ssc.assn.a3.zork;
 import io.muic.ssc.assn.a3.zork.command.CommandFactory;
 import io.muic.ssc.assn.a3.zork.command.CommandParser;
 import io.muic.ssc.assn.a3.zork.command.CommandType;
-import io.muic.ssc.assn.a3.zork.room.Room;
 
 import java.util.*;
 
@@ -39,7 +38,7 @@ public enum Game {
             words = parser.parse(input, playingGame);
             try {
                 command = CommandFactory.getCommandType(words.get(0));
-                command.getCommandInstance().execute(words.subList(1, words.size()));
+                command.getCommandInstance().execute(words.get(1));
             } catch (NullPointerException e) {
                 output.println("Command does not exist");
             }
@@ -60,7 +59,6 @@ public enum Game {
     }
 
     public void quit() {
-//        scanner.close();
         playingGame = false;
     }
 

@@ -8,7 +8,7 @@ import java.util.List;
 public class HelpCommand extends Command {
 
     @Override
-    public void execute(List<String> args) {
+    public void execute(String arg) {
         game.getOutput().println("User requests for help. These are the list of commands we have:");
         game.getOutput().printf("Command", "Number of Arguments");
         game.getOutput().println("------------------------------------");
