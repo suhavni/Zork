@@ -29,6 +29,7 @@ public enum Game {
     Game() {
         output = new GameOutput();
         playingGame = false;
+        savedCheckPoints = new HashMap<>();
     }
 
     /**
@@ -39,7 +40,6 @@ public enum Game {
      */
     public void play(String mapName) {
         playingGame = true;
-        savedCheckPoints = new HashMap<>();
         // TODO: FIX this
         gameState = new GameState(mapName);
     }
@@ -99,6 +99,7 @@ public enum Game {
      */
     public void load(String checkPointName) {
         if (savedCheckPoints.containsKey(checkPointName)) {
+            playingGame = true;
             gameState = new GameState(savedCheckPoints.get(checkPointName));
         } else {
             output.println("No such checkpoint found");
