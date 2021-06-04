@@ -1,6 +1,5 @@
-package io.muic.ssc.assn.a3.zork.command.type;
+package io.muic.ssc.assn.a3.zork.command.impl;
 
-import io.muic.ssc.assn.a3.zork.Game;
 import io.muic.ssc.assn.a3.zork.command.Command;
 import io.muic.ssc.assn.a3.zork.item.ItemFactory;
 

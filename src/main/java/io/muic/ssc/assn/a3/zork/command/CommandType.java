@@ -1,6 +1,6 @@
 package io.muic.ssc.assn.a3.zork.command;
 
-import io.muic.ssc.assn.a3.zork.command.type.*;
+import io.muic.ssc.assn.a3.zork.command.impl.*;
 
 import java.lang.reflect.InvocationTargetException;
 

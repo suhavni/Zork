@@ -1,6 +1,6 @@
 package io.muic.ssc.assn.a3.zork.item;
 
-import io.muic.ssc.assn.a3.zork.item.type.DefaultItem;
+import io.muic.ssc.assn.a3.zork.item.impl.DefaultItem;
 
 import java.lang.reflect.InvocationTargetException;
 

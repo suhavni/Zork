@@ -1,6 +1,5 @@
-package io.muic.ssc.assn.a3.zork.item.type;
+package io.muic.ssc.assn.a3.zork.item.impl;
 
-import io.muic.ssc.assn.a3.zork.Game;
 import io.muic.ssc.assn.a3.zork.item.Item;
 
 public class DefaultItem extends Item {
