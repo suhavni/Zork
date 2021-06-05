@@ -4,6 +4,7 @@ package io.muic.ssc.assn.a3.zork;
 import io.muic.ssc.assn.a3.zork.command.CommandFactory;
 import io.muic.ssc.assn.a3.zork.command.CommandParser;
 import io.muic.ssc.assn.a3.zork.command.CommandType;
+import io.muic.ssc.assn.a3.zork.map.MapType;
 
 import java.util.*;
 
@@ -41,10 +42,16 @@ public enum Game {
      *
      * @param mapName The name of the map the user would like to play
      */
-    public void play(String mapName) {
-        playingGame = true;
-        // TODO: FIX this
-        gameState = new GameState(mapName);
+    public boolean play(String mapName) {
+        for (MapType map : MapType.values()) {
+            if (map.getMapName().equals(mapName)) {
+                playingGame = true;
+                // TODO: FIX this
+                gameState = new GameState(mapName);
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
@@ -55,7 +62,7 @@ public enum Game {
      */
     public void run() {
         String latestCommand = "";
-        while (!latestCommand.equals("exit")) {
+        while (playingGame || !latestCommand.equals("exit")) {
             latestCommand = runHelper(scanner);
         }
     }

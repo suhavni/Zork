@@ -10,8 +10,6 @@ public class Player {
     int hp;
     // The attack power of the player
     int attack;
-    // The player's defense
-    int defense;
     // The amount of items in the player's inventory
     int inventorySpaceTaken;
     // The maximum capacity the player can carry
@@ -29,7 +27,6 @@ public class Player {
         maxHp = 1000;
         hp = maxHp;
         attack = 200;
-        defense = 100;
         inventorySpaceTaken = 0;
         inventoryCapacity = 10;
         inventory = new HashMap<>();
@@ -46,7 +43,6 @@ public class Player {
         this.maxHp = player.maxHp;
         this.hp = player.hp;
         this.attack = player.attack;
-        this.defense = player.defense;
         this.inventorySpaceTaken = player.inventorySpaceTaken;
         this.inventoryCapacity = player.inventoryCapacity;
         this.inventory = new HashMap<>();
@@ -117,10 +113,6 @@ public class Player {
 
     public int getAttack() {
         return attack;
-    }
-
-    public int getDefense() {
-        return defense;
     }
 
     public void printInventory() {
