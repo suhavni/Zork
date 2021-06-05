@@ -1,6 +1,7 @@
 package io.muic.ssc.assn.a3.zork;
 
 
+import io.muic.ssc.assn.a3.zork.command.Command;
 import io.muic.ssc.assn.a3.zork.command.CommandFactory;
 import io.muic.ssc.assn.a3.zork.command.CommandParser;
 import io.muic.ssc.assn.a3.zork.command.CommandType;
@@ -61,23 +62,24 @@ public enum Game {
      * to use the EXIT command
      */
     public void run() {
-        String latestCommand = "";
-        while (playingGame || !latestCommand.equals("exit")) {
-            latestCommand = runHelper(scanner);
+        String input;
+        CommandType latestCommand = null;
+        while (playingGame || latestCommand == null || !latestCommand.equals(CommandType.EXIT)) {
+            input = scanner.nextLine();
+            latestCommand = runHelper(input);
         }
     }
 
-    public String  runHelper(Scanner customScanner) {
-        String input = customScanner.nextLine();
+    public CommandType runHelper(String input) {
         List<String> words = parser.parse(input, playingGame);
         try {
             CommandType command = CommandFactory.getCommandType(words.get(0));
             command.getCommandInstance().execute(words.get(1));
-            return input;
+            return command;
         } catch (NullPointerException e) {
             output.println("Command does not exist");
         }
-        return input;
+        return null;
     }
 
     /**

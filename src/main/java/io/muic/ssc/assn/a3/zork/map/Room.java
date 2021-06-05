@@ -67,4 +67,8 @@ public class Room {
         }
         return stringBuilder.toString();
     }
+
+    public Room getNextRoom(Direction direction) {
+        return doors.getOrDefault(direction, null);
+    }
 }

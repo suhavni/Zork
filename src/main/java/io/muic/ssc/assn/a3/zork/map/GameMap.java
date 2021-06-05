@@ -36,10 +36,15 @@ public abstract class GameMap {
         spawnRoom = room;
     }
 
-    protected void printMap() throws FileNotFoundException {
-        Scanner scanner = new Scanner(map);
-        while (scanner.hasNext()) {
-            Game.INSTANCE.getOutput().println(scanner.nextLine());
+    public void printMap() {
+        try {
+            Scanner scanner = new Scanner(map);
+            while (scanner.hasNext()) {
+                Game.INSTANCE.getOutput().println(scanner.nextLine());
+            }
+        } catch (FileNotFoundException e) {
+            Game.INSTANCE.getOutput().println("Game is unable to print map right now due to undergoing some difficulties.");
+            Game.INSTANCE.getOutput().println("Please try again later.");
         }
     }
 

@@ -6,7 +6,7 @@ import java.lang.reflect.InvocationTargetException;
 
 public enum CommandType {
 //     TODO: ADD more commands
-//     TODO: attack with, go {direction}, map, autopilot {file}
+//     TODO: attack with
     EXIT(false, true,0, "exit", ExitCommand.class),
     HELP(true, true,0, "help", HelpCommand.class),
     INFO(true, false, 0, "info", InfoCommand.class),
@@ -16,6 +16,8 @@ public enum CommandType {
     SAVE(true, false, 1, "save", SaveCommand.class),
     LOAD(false, true, 1, "load", LoadCommand.class),
     AUTOPILOT(true, false, 1, "autopilot", AutopilotCommand.class),
+    MAP(true, false, 0, "map", MapCommand.class),
+    GO(true, false, 1, "go", GoCommand.class),
     PLAY(false, true, 1, "play", PlayCommand.class);
 
     int numArgs;

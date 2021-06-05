@@ -48,4 +48,15 @@ public class GameState {
     public Room getCurrentRoom() {
         return currentRoom;
     }
+
+    public GameMap getMap() {
+        return map;
+    }
+
+    public void move(Direction direction) {
+        Room nextRoom = currentRoom.getNextRoom(direction);
+        if (nextRoom != null) {
+            currentRoom = nextRoom;
+        }
+    }
 }
