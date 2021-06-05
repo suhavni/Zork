@@ -24,6 +24,8 @@ public class InfoCommand extends Command {
         game.getOutput().printf("Current Room:", game.getCheckPoint().getCurrentRoom().getRoomName());
         game.getOutput().printf("Doors:", game.getCheckPoint().getCurrentRoom().getAvailableDirections());
         game.getOutput().println("==========================");
-        game.getCheckPoint().getCurrentRoom().printMonsterStats();
+        if (game.getCheckPoint().getCurrentRoom().getMonster() != null) {
+            game.getCheckPoint().getCurrentRoom().getMonster().printStats();
+        }
     }
 }

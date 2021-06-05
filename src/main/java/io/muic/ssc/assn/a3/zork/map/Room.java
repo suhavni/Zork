@@ -1,7 +1,6 @@
 package io.muic.ssc.assn.a3.zork.map;
 
 import io.muic.ssc.assn.a3.zork.Direction;
-import io.muic.ssc.assn.a3.zork.Game;
 import io.muic.ssc.assn.a3.zork.item.Item;
 
 import java.util.HashMap;
@@ -35,9 +34,8 @@ public class Room {
         }
     }
 
-    public Room addMonster(Monster monster) {
+    public void addMonster(Monster monster) {
         this.monster = monster;
-        return this;
     }
 
     public Room addItem(Item item) {
@@ -54,10 +52,8 @@ public class Room {
         return true;
     }
 
-    public void printMonsterStats() {
-        if (monster != null) {
-            monster.printStats();
-        }
+    public Monster getMonster() {
+        return monster;
     }
 
     public String getAvailableDirections() {

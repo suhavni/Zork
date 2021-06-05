@@ -4,16 +4,13 @@ import io.muic.ssc.assn.a3.zork.Game;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Scanner;
-import java.util.Set;
+import java.util.*;
 
 public abstract class GameMap {
-    protected Set<Room> rooms;
+    private Map<String, Room> rooms;
     protected String mapName;
-    protected File map;
-    protected Room spawnRoom;
+    private File map;
+    private Room spawnRoom;
 
     protected void addMap(File file) {
         map = file;
@@ -21,7 +18,7 @@ public abstract class GameMap {
     }
 
     public GameMap() {
-        rooms = new HashSet<>();
+        rooms = new HashMap<>();
     }
 
     protected void addMapName(String mapName) {
@@ -29,7 +26,9 @@ public abstract class GameMap {
     }
 
     protected void addRooms(Room[] roomsToAdd) {
-        rooms.addAll(Arrays.asList(roomsToAdd));
+        for (Room room : roomsToAdd) {
+            rooms.put(room.getRoomName(), room);
+        }
     }
 
     protected void setSpawnRoom(Room room) {
@@ -50,5 +49,20 @@ public abstract class GameMap {
 
     public Room getSpawnRoom() {
         return spawnRoom;
+    }
+
+    protected Set<String> getRooms() {
+        return rooms.keySet();
+    }
+
+    protected Room RoomLookup(String roomName) {
+        return rooms.get(roomName);
+    }
+
+    protected void copyMonstersAndItems(Room copyTo, Room copyFrom) {
+        Monster monster = copyFrom.getMonster();
+        if (monster != null) {
+            copyTo.addMonster(new Monster(monster.getHp(), monster.getAttack()));
+        }
     }
 }

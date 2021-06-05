@@ -3,8 +3,8 @@ package io.muic.ssc.assn.a3.zork.map;
 import io.muic.ssc.assn.a3.zork.Game;
 
 public class Monster {
-    int hp;
-    int attack;
+    private int hp;
+    private int attack;
 
     public Monster(int hp, int attack) {
         this.hp = hp;
@@ -19,5 +19,13 @@ public class Monster {
         Game.INSTANCE.getOutput().println("MONSTER STATS");
         Game.INSTANCE.getOutput().printf("HP:", ""+hp);
         Game.INSTANCE.getOutput().printf("Attack Power", ""+attack);
+    }
+
+    public int getHp() {
+        return hp;
+    }
+
+    public int getAttack() {
+        return attack;
     }
 }

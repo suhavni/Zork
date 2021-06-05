@@ -43,16 +43,14 @@ public enum Game {
      *
      * @param mapName The name of the map the user would like to play
      */
-    public boolean play(String mapName) {
+    public void play(String mapName) {
         for (MapType map : MapType.values()) {
             if (map.getMapName().equals(mapName)) {
                 playingGame = true;
                 // TODO: FIX this
                 gameState = new GameState(map);
-                return true;
             }
         }
-        return false;
     }
 
     /**
