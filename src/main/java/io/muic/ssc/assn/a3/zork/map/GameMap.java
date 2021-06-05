@@ -1,6 +1,7 @@
 package io.muic.ssc.assn.a3.zork.map;
 
 import io.muic.ssc.assn.a3.zork.Game;
+import io.muic.ssc.assn.a3.zork.item.ItemType;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -63,6 +64,9 @@ public abstract class GameMap {
         Monster monster = copyFrom.getMonster();
         if (monster != null) {
             copyTo.addMonster(new Monster(monster.getHp(), monster.getAttack()));
+        }
+        for (ItemType itemType : copyFrom.getItems()) {
+            copyTo.addItem(itemType.getItem());
         }
     }
 }

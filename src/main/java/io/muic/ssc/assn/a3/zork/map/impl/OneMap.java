@@ -17,11 +17,12 @@ public class OneMap extends GameMap {
         addMonstersAndItems(rooms);
     }
 
-    public OneMap(OneMap map) {
+    public OneMap(OneMap map, String curRoom) {
         super();
         addMapName("One Map");
         addMap(new File("src/main/resources/maps/one.txt"));
         constructRooms();
+        setSpawnRoom(RoomLookup(curRoom));
         for (String room : getRooms()) {
             copyMonstersAndItems(this.RoomLookup(room), map.RoomLookup(room));
         }
@@ -55,8 +56,13 @@ public class OneMap extends GameMap {
 
     private void addMonstersAndItems(Room[] rooms) {
         rooms[0].addMonster(new Monster(500, 400));
-        rooms[2].addMonster(new Monster(600, 400));
-        rooms[3].addMonster(new Monster(700, 400));
+        rooms[3].addMonster(new Monster(600, 400));
+        rooms[4].addMonster(new Monster(700, 400));
         rooms[6].addMonster(new Monster(800, 650));
+
+        rooms[0].addItem("bow");
+        rooms[1].addItem("hp potion");
+        rooms[2].addItem("hp potion");
+        rooms[5].addItem("sword");
     }
 }

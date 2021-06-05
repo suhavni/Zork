@@ -2,6 +2,8 @@ package io.muic.ssc.assn.a3.zork.map;
 
 import io.muic.ssc.assn.a3.zork.Direction;
 import io.muic.ssc.assn.a3.zork.item.Item;
+import io.muic.ssc.assn.a3.zork.item.ItemFactory;
+import io.muic.ssc.assn.a3.zork.item.ItemType;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -11,8 +13,8 @@ import java.util.Set;
 public class Room {
 
     protected Monster monster;
-    protected Set<Item> items;
-    private String roomName;
+    protected Set<ItemType> items;
+    private final String roomName;
     private Map<Direction, Room> doors;
 
     public Room(String roomName) {
@@ -38,9 +40,8 @@ public class Room {
         this.monster = monster;
     }
 
-    public Room addItem(Item item) {
-        items.add(item);
-        return this;
+    public void addItem(String item) {
+        items.add(ItemFactory.getItemType(item));
     }
 
     public String getRoomName() {
@@ -48,8 +49,8 @@ public class Room {
     }
 
     // TODO: implement this
-    public boolean containsItem() {
-        return true;
+    public boolean containsItem(String item) {
+        return items.contains(ItemFactory.getItemType(item));
     }
 
     public Monster getMonster() {
@@ -66,5 +67,21 @@ public class Room {
 
     public Room getNextRoom(Direction direction) {
         return doors.getOrDefault(direction, null);
+    }
+
+    public Set<ItemType> getItems() {
+        return items;
+    }
+
+    public String itemsAsString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (ItemType item : items) {
+            stringBuilder.append(item.getItem()).append(" ");
+        }
+        return stringBuilder.toString();
+    }
+
+    public void removeItem(String item) {
+        items.remove(ItemFactory.getItemType(item));
     }
 }

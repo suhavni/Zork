@@ -1,6 +1,7 @@
 package io.muic.ssc.assn.a3.zork;
 
 import io.muic.ssc.assn.a3.zork.map.GameMap;
+import io.muic.ssc.assn.a3.zork.map.MapFactory;
 import io.muic.ssc.assn.a3.zork.map.MapType;
 import io.muic.ssc.assn.a3.zork.map.Room;
 import io.muic.ssc.assn.a3.zork.player.Player;
@@ -11,7 +12,7 @@ public class GameState {
     private Player player;
     // The room the player is currently in
     private Room currentRoom;
-
+    private MapType mapType;
     private GameMap map;
 
     /**
@@ -22,6 +23,7 @@ public class GameState {
      */
     public GameState(MapType mapType) {
         // TODO: GameMap game = MAP_LOOKUP.get(mapName);
+        this.mapType = mapType;
         this.player = new Player();
         map = mapType.getInstance();
         assert map != null;
@@ -38,7 +40,10 @@ public class GameState {
         // TODO: this.GameMap = save.GameMap;
         this.player = new Player(gameState.player);
         this.currentRoom = gameState.currentRoom;
-        this.map = gameState.map;
+        this.mapType = gameState.mapType;
+        this.map = mapType.getInstance(mapType, gameState.map, gameState.currentRoom.getRoomName());
+        assert this.map != null;
+        this.currentRoom = this.map.getSpawnRoom();
     }
 
     public Player getPlayer() {

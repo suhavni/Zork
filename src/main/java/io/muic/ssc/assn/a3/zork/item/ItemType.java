@@ -1,13 +1,15 @@
 package io.muic.ssc.assn.a3.zork.item;
 
-import io.muic.ssc.assn.a3.zork.item.impl.DefaultItem;
+import io.muic.ssc.assn.a3.zork.item.impl.*;
 
 import java.lang.reflect.InvocationTargetException;
 
 public enum ItemType {
     // TODO: add items
     // TODO: implement this
-    DEFAULT(null, DefaultItem.class);
+    SWORD("sword", Sword.class),
+    BOW("bow", Bow.class),
+    HPPOTION("hp potion", HpPotion.class);
 
     String item;
     Item itemInstance;

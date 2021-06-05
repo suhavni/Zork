@@ -15,6 +15,6 @@ public class ItemFactory {
     }}
 
     public static ItemType getItemType(String item) {
-        return ITEM_LOOKUP.getOrDefault(item, ItemType.DEFAULT);
+        return ITEM_LOOKUP.getOrDefault(item, null);
     }
 }

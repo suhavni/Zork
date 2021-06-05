@@ -1,21 +1,17 @@
 package io.muic.ssc.assn.a3.zork.player;
 
-import io.muic.ssc.assn.a3.zork.Game;
+import static io.muic.ssc.assn.a3.zork.Game.INSTANCE;
 
-import java.util.HashMap;
-import java.util.Map;
+//import
 
 public class Player {
     // The maximum HP a player can have
     private int maxHp;
     // The current HP the player has
     private int hp;
-    // The attack power of the player
-    private int attack;
 
-    private Inventory inventory;
-    // The singleton instance of the game
-    Game game = Game.INSTANCE;
+    private int attack;
+    private final Inventory inventory;
 
     /**
      * Initializing the Player
@@ -41,13 +37,14 @@ public class Player {
     }
 
     /**
-     * Decreases the HP of the player
+     * changes the HP of the player
      *
-     * @param hpReduction amount of HP reduced
+     * @param hpAdded amount of HP added/reduced depending on sign
      */
-    public void decreaseHp(int hpReduction) {
-        hp -= hpReduction;
+    public void updateHp(int hpAdded) {
+        hp += hpAdded;
         if (hp <= 0) { dies(); }
+        else if (hp > maxHp) { hp = maxHp; }
     }
 
     /**
@@ -64,8 +61,8 @@ public class Player {
      * Player loses the game -> death
      */
     public void dies() {
-        game.getOutput().println("Unfortunately, player has died.");
-        game.quit();
+        INSTANCE.getOutput().println("Unfortunately, player has died.");
+        INSTANCE.quit();
          // TODO: Go back to last saved checkpoint vs. end game
     }
 
@@ -77,11 +74,11 @@ public class Player {
         return hp;
     }
 
-    public int getAttack() {
-        return attack;
-    }
-
     public Inventory getInventory() {
         return inventory;
+    }
+
+    public int getAttack() {
+        return attack;
     }
 }

@@ -12,6 +12,7 @@ public class DropCommand extends Command {
         if (game.getCheckPoint().getPlayer().getInventory().carriesItem(arg)) {
             ItemFactory.getItemType(arg).getItemInstance().useItem();
             game.getCheckPoint().getPlayer().getInventory().removeItemFromInventory(arg);
+            game.getCheckPoint().getCurrentRoom().addItem(arg);
         } else {
             game.getOutput().println("Item not found in inventory...");
         }
