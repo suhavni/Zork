@@ -13,7 +13,7 @@ public class InfoCommand extends Command {
         game.getOutput().printf("Attack Power:", "" + game.getCheckPoint().getPlayer().getAttack());
         game.getOutput().println("==========================");
         game.getOutput().println("INVENTORY:");
-        game.getCheckPoint().getPlayer().printInventory();
+        game.getCheckPoint().getPlayer().getInventory().printInventory();
         game.getOutput().println("==========================");
         game.getOutput().println("SAVED CHECKPOINTS");
         game.getOutput().println(game.getSavedCheckPoints().toString());

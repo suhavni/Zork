@@ -10,7 +10,7 @@ public class AutopilotCommand extends Command {
     @Override
     public void execute(String arg) {
         try {
-            File file = new File("src/main/java/io/muic/ssc/assn/a3/zork/"+ arg);
+            File file = new File(arg);
             System.out.println(file.getAbsolutePath());
             Scanner scanner = new Scanner(file);
             String latestCommand = "";

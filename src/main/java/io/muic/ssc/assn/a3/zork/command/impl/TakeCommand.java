@@ -8,7 +8,7 @@ public class TakeCommand extends Command {
     public void execute(String arg) {
         if (game.getCheckPoint().getCurrentRoom().containsItem()) {
             game.getOutput().println("Adding " + arg + " to inventory!");
-            game.getCheckPoint().getPlayer().addItemToInventory(arg);
+            game.getCheckPoint().getPlayer().getInventory().addItemToInventory(arg);
         } else {
             game.getOutput().println("Sorry, room doesn't have " + arg);
         }

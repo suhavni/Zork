@@ -3,6 +3,7 @@ package io.muic.ssc.assn.a3.zork;
 import io.muic.ssc.assn.a3.zork.map.GameMap;
 import io.muic.ssc.assn.a3.zork.map.MapType;
 import io.muic.ssc.assn.a3.zork.map.Room;
+import io.muic.ssc.assn.a3.zork.player.Player;
 
 public class GameState {
     // TODO: private GameMap;
