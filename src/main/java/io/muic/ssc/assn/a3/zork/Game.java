@@ -47,7 +47,7 @@ public enum Game {
             if (map.getMapName().equals(mapName)) {
                 playingGame = true;
                 // TODO: FIX this
-                gameState = new GameState(mapName);
+                gameState = new GameState(map);
                 return true;
             }
         }

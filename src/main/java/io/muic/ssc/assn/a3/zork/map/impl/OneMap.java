@@ -1,4 +1,4 @@
-package io.muic.ssc.assn.a3.zork.map.one;
+package io.muic.ssc.assn.a3.zork.map.impl;
 
 import io.muic.ssc.assn.a3.zork.map.GameMap;
 import io.muic.ssc.assn.a3.zork.map.Monster;
@@ -11,8 +11,7 @@ public class OneMap extends GameMap {
     public OneMap() {
         super();
         addMapName("One Map");
-        addMap(new File("oneAscii"));
-
+        addMap(new File("src/main/java/maps/one.txt"));
         constructRooms();
     }
 

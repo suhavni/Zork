@@ -1,6 +1,8 @@
 package io.muic.ssc.assn.a3.zork.map;
 
-import io.muic.ssc.assn.a3.zork.map.one.OneMap;
+import io.muic.ssc.assn.a3.zork.map.impl.OneMap;
+
+import java.lang.reflect.InvocationTargetException;
 
 public enum MapType {
     ONE("one", OneMap.class);
@@ -15,5 +17,14 @@ public enum MapType {
 
     public String getMapName() {
         return mapName;
+    }
+
+    public GameMap getInstance() {
+        try {
+            return mapClass.getConstructor().newInstance();
+        } catch (InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }
