@@ -13,13 +13,12 @@ public class CommandParser {
     }
 
     // "attack with  weapon" => ["attack with", "weapon"]
-    // TODO: HANDLE invalid commands (NULLPOINTEREXCEPTION)
     public List<String> parse(String stringInput, boolean isDuringGame) {
         String cleanedInput = stringInput.trim().toLowerCase();
         try {
             String command = matchInputToCommand(cleanedInput, isDuringGame);
             assert command != null;
-            String argString = cleanedInput.replaceFirst(command, "").strip();
+            String argString = cleanedInput.replaceFirst(command, "").replaceAll("_", " ").strip();
             return Arrays.asList(command, argString);
         } catch (NullPointerException e) {
             return null;

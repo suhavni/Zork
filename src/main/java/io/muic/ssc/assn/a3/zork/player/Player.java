@@ -62,7 +62,6 @@ public class Player {
         INSTANCE.getOutput().println("\u001B[33;7;1m Unfortunately, player has died. \u001B[0m");
         INSTANCE.getOutput().println("Quitting current game session");
         INSTANCE.quit();
-         // TODO: Go back to last saved checkpoint vs. end game
     }
 
     public int getMaxHp() {

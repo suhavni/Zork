@@ -8,7 +8,6 @@ import io.muic.ssc.assn.a3.zork.player.Player;
 import java.lang.reflect.InvocationTargetException;
 
 public class GameState {
-    // TODO: private GameMap;
     // an instance of the Player class (with stats associated with the player)
     private final Player player;
     // The room the player is currently in
@@ -23,7 +22,6 @@ public class GameState {
      * @param mapType the map played by the user
      */
     public GameState(MapType mapType) {
-        // TODO: GameMap game = MAP_LOOKUP.get(mapName);
         this.mapType = mapType;
         this.player = new Player();
         try {
@@ -40,7 +38,6 @@ public class GameState {
      * @param gameState the game state we want to duplicate
      */
     public GameState(GameState gameState) {
-        // TODO: this.GameMap = save.GameMap;
         this.player = new Player(gameState.player);
         this.currentRoom = gameState.currentRoom;
         this.mapType = gameState.mapType;

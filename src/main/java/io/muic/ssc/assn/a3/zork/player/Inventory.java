@@ -42,7 +42,6 @@ public class Inventory {
     /**
      * @param item item that has been picked up from player
      */
-    // TODO: update accordingly
     public void addItemToInventory(String item) {
         if (inventorySpaceTaken < inventoryCapacity) {
             inventorySpaceTaken++;

@@ -11,9 +11,7 @@ public class PlayCommand extends Command {
         game.getOutput().println("\u001B[33mInitializing new Zork Game!!!\u001B[0m");
         if (MapFactory.getMap(arg) == null) {
             game.getOutput().println("Sorry, map does not exist. Currently, the maps we have are: ");
-            for (MapType map : MapType.values()) {
-                game.getOutput().print("\u001B[35m" + map.getMapName() + " \u001B[0m");
-            }
+            game.getOutput().println(MapFactory.getAllMaps().toString());
             game.getOutput().println("");
         } else {
             game.play(arg);

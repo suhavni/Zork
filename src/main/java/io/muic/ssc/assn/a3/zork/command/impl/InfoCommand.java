@@ -4,9 +4,7 @@ import io.muic.ssc.assn.a3.zork.command.Command;
 
 public class InfoCommand extends Command {
     @Override
-    // TODO: UPDATE this
     public void execute(String arg) {
-        // TODO: in case there's extra player stats.
         game.getOutput().println("\u001B[34mPLAYER STATS:\u001B[0m");
         game.getOutput().printf("HP:", "" + game.getCheckPoint().getPlayer().getHp());
         game.getOutput().printf("Max HP:", "" + game.getCheckPoint().getPlayer().getMaxHp());
@@ -22,7 +20,7 @@ public class InfoCommand extends Command {
         game.getOutput().println("\u001B[34mROOM STATS\u001B[0m");
         game.getOutput().printf("Current Room:", game.getCheckPoint().getCurrentRoom().getRoomName());
         game.getOutput().printf("Doors:", game.getCheckPoint().getCurrentRoom().getAvailableDirections());
-        game.getOutput().printf("Items:", game.getCheckPoint().getCurrentRoom().itemsAsString());
+        game.getOutput().printf("Items:", game.getCheckPoint().getCurrentRoom().getItems().toString());
 
         game.getOutput().println("==========================");
         if (game.getCheckPoint().getCurrentRoom().getMonster() != null) {

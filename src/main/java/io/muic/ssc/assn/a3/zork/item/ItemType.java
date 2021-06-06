@@ -3,8 +3,6 @@ package io.muic.ssc.assn.a3.zork.item;
 import io.muic.ssc.assn.a3.zork.item.impl.*;
 
 public enum ItemType {
-    // TODO: add items
-    // TODO: implement this
     SWORD("sword", Sword.class),
     BOW("bow", Bow.class),
     LUCK_GRENADE("luck grenade", LuckGrenade.class),

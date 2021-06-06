@@ -47,7 +47,6 @@ public class Room {
         return roomName;
     }
 
-    // TODO: implement this
     public boolean containsItem(String item) {
         return items.contains(ItemFactory.getItemType(item));
     }
@@ -70,14 +69,6 @@ public class Room {
 
     public Set<ItemType> getItems() {
         return items;
-    }
-
-    public String itemsAsString() {
-        StringBuilder stringBuilder = new StringBuilder();
-        for (ItemType item : items) {
-            stringBuilder.append(item.getItem()).append(" ");
-        }
-        return stringBuilder.toString();
     }
 
     public void removeItem(String item) {

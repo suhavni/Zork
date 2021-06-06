@@ -5,7 +5,7 @@ import io.muic.ssc.assn.a3.zork.item.Item;
 public class AttackPotion extends Item {
     @Override
     public boolean useItem() {
-        game.getOutput().println("Restoring " + 555 + " HP");
+        game.getOutput().println("Adding " + 75 + " Attack Power");
         game.getCheckPoint().getPlayer().addAttack(75);
         return true;
     }
