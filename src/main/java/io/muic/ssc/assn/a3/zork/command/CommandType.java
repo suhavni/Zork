@@ -18,6 +18,7 @@ public enum CommandType {
     AUTOPILOT(true, false, 1, "autopilot", AutopilotCommand.class),
     MAP(true, false, 0, "map", MapCommand.class),
     GO(true, false, 1, "go", GoCommand.class),
+    ATTACK_WITH(true, false, 1, "attack with", AttackWithCommand.class),
     PLAY(false, true, 1, "play", PlayCommand.class);
 
     int numArgs;

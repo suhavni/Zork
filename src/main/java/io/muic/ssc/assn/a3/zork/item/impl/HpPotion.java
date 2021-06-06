@@ -5,7 +5,8 @@ import io.muic.ssc.assn.a3.zork.item.Item;
 public class HpPotion extends Item {
     @Override
     // TODO: update
-    public void useItem() {
+    public boolean useItem() {
         game.getCheckPoint().getPlayer().updateHp(100);
+        return true;
     }
 }

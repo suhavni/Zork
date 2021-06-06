@@ -8,8 +8,9 @@ public class Weapon extends Item {
     }
 
     @Override
-    public void useItem() {
+    public boolean useItem() {
         game.getOutput().println("Sorry, this item does not have any special drop ability");
+        return false;
     }
 
     public void setAttackBonus(int attackBonus) {
