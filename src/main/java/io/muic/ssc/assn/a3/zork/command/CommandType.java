@@ -5,8 +5,6 @@ import io.muic.ssc.assn.a3.zork.command.impl.*;
 import java.lang.reflect.InvocationTargetException;
 
 public enum CommandType {
-//     TODO: ADD more commands
-//     TODO: attack with
     EXIT(false, true,0, "exit", ExitCommand.class),
     HELP(true, true,0, "help", HelpCommand.class),
     INFO(true, false, 0, "info", InfoCommand.class),

@@ -6,11 +6,12 @@ import io.muic.ssc.assn.a3.zork.item.ItemFactory;
 import io.muic.ssc.assn.a3.zork.item.Weapon;
 import io.muic.ssc.assn.a3.zork.map.Monster;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.Random;
 
 
 public class AttackWithCommand extends Command {
-    protected static final Random RANDOM = new Random();
+    protected Random random = new Random();
 
     private void attackMonster(Monster monster, String arg) {
         game.getOutput().println("\u001B[33mTrying to attack monster with " + arg + "\u001B[0m");
@@ -19,28 +20,37 @@ public class AttackWithCommand extends Command {
             return;
         }
 
-        Item item = ItemFactory.getItemType(arg).getItemInstance();
-        if (game.getCheckPoint().getPlayer().getInventory().carriesItem(arg) && item instanceof Weapon) {
-            Weapon weapon = (Weapon) item;
-            int attack = RANDOM.nextInt(game.getCheckPoint().getPlayer().getAttack() * (100+weapon.getAttackBonus())/100);
-            game.getOutput().println("attacked with " + attack + " attack power.");
-            monster.reduceHp(attack);
-            game.getOutput().println("Monster's current HP is " + monster.getHp());
-        } else {
-            game.getOutput().println("Either player does not carry item, or this item is not a weapon");
+        Item item = null;
+        try {
+            item = ItemFactory.getItemType(arg).getItemClass().getConstructor().newInstance();
+            if (game.getCheckPoint().getPlayer().getInventory().carriesItem(arg) && item instanceof Weapon) {
+                Weapon weapon = (Weapon) item;
+                int attack = random.nextInt(game.getCheckPoint().getPlayer().getAttack() * (100+weapon.getAttackBonus())/100);
+                game.getOutput().println("Attacked with " + attack + " attack power.");
+                monster.reduceHp(attack);
+            } else {
+                game.getOutput().println("Either player does not carry item, or this item is not a weapon");
+            }
+        } catch (InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchMethodException ignored) {
         }
+
     }
 
     private void monsterStrikesBack(Monster monster) {
         if (monster.getHp() <= 0) {
-            game.getOutput().println("\u001B[34mCongratulations you killed the monster\u001B[0m");
+            game.getOutput().println("\u001B[32;7;1m Congratulations!! You killed the monster! \u001B[0m");
+            game.getOutput().println("You received a hp potion");
+            game.getCheckPoint().getPlayer().getInventory().addItemToInventory("hp potion");
             game.getCheckPoint().getCurrentRoom().addMonster(null);
         } else {
+            game.getOutput().println("Monster's current HP is " + monster.getHp());
             game.getOutput().println("Monster tries to attack back");
-            int attack = RANDOM.nextInt(monster.getAttack());
-            game.getOutput().println("attacked with " + attack + " attack power.");
+            int attack = random.nextInt(monster.getAttack());
+            game.getOutput().println("Attacked with " + attack + " attack power.");
             game.getCheckPoint().getPlayer().updateHp(-1*attack);
-            game.getOutput().println("your current HP is " + game.getCheckPoint().getPlayer().getHp());
+            if (game.isPlayingGame()) {
+                game.getOutput().println("Your current HP is " + game.getCheckPoint().getPlayer().getHp());
+            }
         }
     }
 

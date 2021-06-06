@@ -21,7 +21,7 @@ public class AutopilotCommand extends Command {
             while (latestCommand == null || !latestCommand.equals(CommandType.QUIT)) {
                 SECONDS.sleep(1);
                 input = scanner.nextLine();
-                game.getOutput().println("\n\u001B[32m>>> " + input + "\u001B[0m");
+                game.getOutput().println("\n\u001B[32m> " + input + "\u001B[0m");
                 latestCommand = game.runHelper(input);
             }
         } catch (FileNotFoundException | InterruptedException e) {

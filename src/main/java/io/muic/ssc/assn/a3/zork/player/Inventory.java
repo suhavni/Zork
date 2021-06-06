@@ -16,7 +16,7 @@ public class Inventory {
     Map<String, Integer> inventory;
 
     public Inventory() {
-        inventoryCapacity = 10;
+        inventoryCapacity = 2;
         inventorySpaceTaken = 0;
         inventory = new HashMap<>();
     }
@@ -60,5 +60,9 @@ public class Inventory {
 
     public boolean carriesItem(String item) {
         return inventory.containsKey(item);
+    }
+
+    public void updateInventoryCapacity() {
+        inventoryCapacity++;
     }
 }

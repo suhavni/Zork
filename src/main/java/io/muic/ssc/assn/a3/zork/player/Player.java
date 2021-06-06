@@ -2,8 +2,6 @@ package io.muic.ssc.assn.a3.zork.player;
 
 import static io.muic.ssc.assn.a3.zork.Game.INSTANCE;
 
-//import
-
 public class Player {
     // The maximum HP a player can have
     private int maxHp;
@@ -61,7 +59,8 @@ public class Player {
      * Player loses the game -> death
      */
     public void dies() {
-        INSTANCE.getOutput().println("Unfortunately, player has died.");
+        INSTANCE.getOutput().println("\u001B[33;7;1m Unfortunately, player has died. \u001B[0m");
+        INSTANCE.getOutput().println("Quitting current game session");
         INSTANCE.quit();
          // TODO: Go back to last saved checkpoint vs. end game
     }
@@ -80,5 +79,9 @@ public class Player {
 
     public int getAttack() {
         return attack;
+    }
+
+    public void addAttack(int addedAttack) {
+        attack += addedAttack;
     }
 }

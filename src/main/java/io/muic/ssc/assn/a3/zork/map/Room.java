@@ -1,7 +1,6 @@
 package io.muic.ssc.assn.a3.zork.map;
 
 import io.muic.ssc.assn.a3.zork.Direction;
-import io.muic.ssc.assn.a3.zork.item.Item;
 import io.muic.ssc.assn.a3.zork.item.ItemFactory;
 import io.muic.ssc.assn.a3.zork.item.ItemType;
 

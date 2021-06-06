@@ -1,18 +1,19 @@
 package io.muic.ssc.assn.a3.zork;
 
 import io.muic.ssc.assn.a3.zork.map.GameMap;
-import io.muic.ssc.assn.a3.zork.map.MapFactory;
 import io.muic.ssc.assn.a3.zork.map.MapType;
 import io.muic.ssc.assn.a3.zork.map.Room;
 import io.muic.ssc.assn.a3.zork.player.Player;
 
+import java.lang.reflect.InvocationTargetException;
+
 public class GameState {
     // TODO: private GameMap;
     // an instance of the Player class (with stats associated with the player)
-    private Player player;
+    private final Player player;
     // The room the player is currently in
     private Room currentRoom;
-    private MapType mapType;
+    private final MapType mapType;
     private GameMap map;
 
     /**
@@ -25,9 +26,11 @@ public class GameState {
         // TODO: GameMap game = MAP_LOOKUP.get(mapName);
         this.mapType = mapType;
         this.player = new Player();
-        map = mapType.getInstance();
-        assert map != null;
-        currentRoom = map.getSpawnRoom();
+        try {
+            map = mapType.getMapClass().getConstructor().newInstance();
+            currentRoom = map.getSpawnRoom();
+        } catch (InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchMethodException ignored) {
+        }
     }
 
     /**
@@ -41,9 +44,11 @@ public class GameState {
         this.player = new Player(gameState.player);
         this.currentRoom = gameState.currentRoom;
         this.mapType = gameState.mapType;
-        this.map = mapType.getInstance(mapType, gameState.map, gameState.currentRoom.getRoomName());
-        assert this.map != null;
-        this.currentRoom = this.map.getSpawnRoom();
+        try {
+            this.map = mapType.getMapClass().getConstructor(GameMap.class, String.class).newInstance(gameState.map, gameState.currentRoom.getRoomName());
+            this.currentRoom = this.map.getSpawnRoom();
+        } catch (InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchMethodException ignored) {
+        }
     }
 
     public Player getPlayer() {
@@ -61,7 +66,11 @@ public class GameState {
     public void move(Direction direction) {
         Room nextRoom = currentRoom.getNextRoom(direction);
         if (nextRoom != null) {
+            Game.INSTANCE.getOutput().println("Move successful. Adding 15% to HP and MAX HP.");
+            Game.INSTANCE.getCheckPoint().getPlayer().updateMaxHp(15);
             currentRoom = nextRoom;
+        } else {
+            Game.INSTANCE.getOutput().println("Move unsuccessful. There is no door there.");
         }
     }
 }

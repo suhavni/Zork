@@ -6,8 +6,8 @@ public class TakeCommand extends Command {
     @Override
     // TODO: spaghetti code, update accordingly
     public void execute(String arg) {
+        game.getOutput().println("\u001B[33mAdding " + arg + " to inventory!\u001B[0m");
         if (game.getCheckPoint().getCurrentRoom().containsItem(arg)) {
-            game.getOutput().println("\u001B[33mAdding " + arg + " to inventory!\u001B[0m");
             game.getCheckPoint().getPlayer().getInventory().addItemToInventory(arg);
             game.getCheckPoint().getCurrentRoom().removeItem(arg);
         } else {

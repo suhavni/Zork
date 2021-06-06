@@ -58,7 +58,7 @@ public enum Game {
         String input;
         CommandType latestCommand = null;
         while (playingGame || latestCommand == null || !latestCommand.equals(CommandType.EXIT)) {
-            getOutput().print("\n\u001B[32m>>> \u001B[0m");
+            getOutput().print("\n\u001B[32m> \u001B[0m");
             input = scanner.nextLine();
             latestCommand = runHelper(input);
         }
@@ -99,7 +99,11 @@ public enum Game {
      * @param checkPointName the name to label the saved state
      */
     public void save(String checkPointName) {
-        savedCheckPoints.put(checkPointName, new GameState(gameState));
+        if (!checkPointName.isEmpty()) {
+            savedCheckPoints.put(checkPointName, new GameState(gameState));
+        } else {
+            getOutput().println("Can't save to empty string name.");
+        }
     }
 
     /**

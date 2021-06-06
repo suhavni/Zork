@@ -2,28 +2,25 @@ package io.muic.ssc.assn.a3.zork.item;
 
 import io.muic.ssc.assn.a3.zork.item.impl.*;
 
-import java.lang.reflect.InvocationTargetException;
-
 public enum ItemType {
     // TODO: add items
     // TODO: implement this
     SWORD("sword", Sword.class),
     BOW("bow", Bow.class),
-    HP_POTION("hp potion", HpPotion.class);
+    LUCK_GRENADE("luck grenade", LuckGrenade.class),
+    ATTACK_POTION("attack potion", AttackPotion.class),
+    HP_POTION("hp potion", HpPotion.class),
+    STORAGE_SPACE("storage space", StorageSpace.class);
 
     String item;
-    Item itemInstance;
+    Class<? extends Item> itemClass;
 
     ItemType(String item, Class<? extends Item> itemClass) {
         this.item = item;
-        try {
-            itemInstance = itemClass.getConstructor().newInstance();
-        } catch (InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
-            e.printStackTrace();
-        }
+        this.itemClass = itemClass;
     }
 
     public String getItem() { return item; }
-    public Item getItemInstance() { return itemInstance; }
+    public Class<? extends Item> getItemClass() { return itemClass; }
 
 }

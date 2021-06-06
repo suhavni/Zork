@@ -62,8 +62,10 @@ public class OneMap extends GameMap {
         rooms[6].addMonster(new Monster(800, 650));
 
         rooms[0].addItem("bow");
-        rooms[1].addItem("hp potion");
-        rooms[2].addItem("hp potion");
+        rooms[1].addItem("luck grenade");
+        rooms[2].addItem("attack potion");
+        rooms[4].addItem("storage space");
         rooms[5].addItem("sword");
+        rooms[6].addItem("attack potion");
     }
 }

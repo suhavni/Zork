@@ -1,6 +1,5 @@
 package io.muic.ssc.assn.a3.zork.map;
 
-import io.muic.ssc.assn.a3.zork.Game;
 import io.muic.ssc.assn.a3.zork.map.impl.OneMap;
 
 import java.lang.reflect.InvocationTargetException;
@@ -20,25 +19,7 @@ public enum MapType {
         return mapName;
     }
 
-    public GameMap getInstance() {
-        try {
-            return mapClass.getConstructor().newInstance();
-        } catch (InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-
-    public GameMap getInstance(MapType mapType, GameMap map, String room) {
-        try {
-            return mapClass.getConstructor(mapType.getMapClass(), String.class).newInstance(map, room);
-        } catch (InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-
-    private Class<? extends GameMap> getMapClass() {
+    public Class<? extends GameMap> getMapClass() {
         return mapClass;
     }
 }
