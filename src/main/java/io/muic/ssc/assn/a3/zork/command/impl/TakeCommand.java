@@ -7,7 +7,7 @@ public class TakeCommand extends Command {
     // TODO: spaghetti code, update accordingly
     public void execute(String arg) {
         if (game.getCheckPoint().getCurrentRoom().containsItem(arg)) {
-            game.getOutput().println("Adding " + arg + " to inventory!");
+            game.getOutput().println("\u001B[33mAdding " + arg + " to inventory!\u001B[0m");
             game.getCheckPoint().getPlayer().getInventory().addItemToInventory(arg);
             game.getCheckPoint().getCurrentRoom().removeItem(arg);
         } else {

@@ -19,4 +19,8 @@ public class GameOutput {
     public void printf(String arg1, String arg2) {
         System.out.printf("%-15s | %-25s\n", arg1, arg2);
     }
+
+    public void print(String message) {
+        System.out.print(message);
+    }
 }

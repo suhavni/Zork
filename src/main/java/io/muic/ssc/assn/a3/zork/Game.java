@@ -1,12 +1,10 @@
 package io.muic.ssc.assn.a3.zork;
 
 
-import io.muic.ssc.assn.a3.zork.command.Command;
 import io.muic.ssc.assn.a3.zork.command.CommandFactory;
 import io.muic.ssc.assn.a3.zork.command.CommandParser;
 import io.muic.ssc.assn.a3.zork.command.CommandType;
 import io.muic.ssc.assn.a3.zork.map.MapFactory;
-import io.muic.ssc.assn.a3.zork.map.MapType;
 
 import java.util.*;
 
@@ -25,17 +23,18 @@ public enum Game {
     GameState gameState;
     // Map of all game saved in the current ggme session
     Map<String, GameState> savedCheckPoints;
-
     /**
      * Creates a new singleton instance of the game. The game starts with the
      * state playingGame to be false. This will change to true whenever the user
      * decides to play the game and back to false whenever the user quits the game.
     **/
     Game() {
+
         output = new GameOutput();
         playingGame = false;
         parser = new CommandParser();
         savedCheckPoints = new HashMap<>();
+        getOutput().println("\u001B[33mType \u001B[35mhelp \u001B[33mat any time to see the available commands.\u001B[0m" );
     }
 
     /**
@@ -59,6 +58,7 @@ public enum Game {
         String input;
         CommandType latestCommand = null;
         while (playingGame || latestCommand == null || !latestCommand.equals(CommandType.EXIT)) {
+            getOutput().print("\n\u001B[32m>>> \u001B[0m");
             input = scanner.nextLine();
             latestCommand = runHelper(input);
         }
@@ -69,6 +69,7 @@ public enum Game {
         try {
             CommandType command = CommandFactory.getCommandType(words.get(0));
             command.getCommandInstance().execute(words.get(1));
+            if (isPlayingGame() && getCheckPoint().getPlayer().getHp() <= 0) { return CommandType.QUIT; }
             return command;
         } catch (NullPointerException e) {
             output.println("Command does not exist");

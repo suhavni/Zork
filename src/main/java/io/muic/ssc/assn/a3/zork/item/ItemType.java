@@ -9,7 +9,7 @@ public enum ItemType {
     // TODO: implement this
     SWORD("sword", Sword.class),
     BOW("bow", Bow.class),
-    HPPOTION("hp potion", HpPotion.class);
+    HP_POTION("hp potion", HpPotion.class);
 
     String item;
     Item itemInstance;

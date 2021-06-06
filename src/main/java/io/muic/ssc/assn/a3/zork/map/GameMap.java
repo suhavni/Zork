@@ -15,7 +15,6 @@ public abstract class GameMap {
 
     protected void addMap(File file) {
         map = file;
-        System.out.println(file.getAbsolutePath());
     }
 
     public GameMap() {

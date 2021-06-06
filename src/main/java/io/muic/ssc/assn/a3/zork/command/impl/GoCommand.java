@@ -11,7 +11,8 @@ public class GoCommand extends Command {
         if (direction == null) {
             game.getOutput().println("THAT ISN'T A DIRECTION RIP");
         } else {
-            game.getOutput().println("Moving " + arg);
+            game.getOutput().println("\u001B[33mMoving " + arg + "\u001B[0m");
+            game.getCheckPoint().getPlayer().updateMaxHp(15);
             game.getCheckPoint().move(direction);
         }
     }

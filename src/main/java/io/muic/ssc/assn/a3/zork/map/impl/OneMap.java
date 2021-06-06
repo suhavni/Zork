@@ -21,7 +21,8 @@ public class OneMap extends GameMap {
         super();
         addMapName("One Map");
         addMap(new File("src/main/resources/maps/one.txt"));
-        constructRooms();
+        Room[] rooms = constructRooms();
+        addRoomProperties(rooms);
         setSpawnRoom(RoomLookup(curRoom));
         for (String room : getRooms()) {
             copyMonstersAndItems(this.RoomLookup(room), map.RoomLookup(room));
@@ -55,7 +56,7 @@ public class OneMap extends GameMap {
     }
 
     private void addMonstersAndItems(Room[] rooms) {
-        rooms[0].addMonster(new Monster(500, 400));
+        rooms[0].addMonster(new Monster(500, 300));
         rooms[3].addMonster(new Monster(600, 400));
         rooms[4].addMonster(new Monster(700, 400));
         rooms[6].addMonster(new Monster(800, 650));

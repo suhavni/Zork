@@ -8,7 +8,7 @@ public class DropCommand extends Command {
     @Override
     // TODO: spaghetti code, edit this
     public void execute(String arg) {
-        System.out.println("Player chooses to drop item");
+        System.out.println("\u001B[33mPlayer chooses to drop item\u001B[0m");
         if (game.getCheckPoint().getPlayer().getInventory().carriesItem(arg)) {
             if (! ItemFactory.getItemType(arg).getItemInstance().useItem()) {
                 game.getCheckPoint().getCurrentRoom().addItem(arg);

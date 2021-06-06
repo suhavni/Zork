@@ -16,7 +16,7 @@ public class Monster {
     }
 
     public void printStats() {
-        Game.INSTANCE.getOutput().println("MONSTER STATS");
+        Game.INSTANCE.getOutput().println("\u001B[34mMONSTER STATS\u001B[0m");
         Game.INSTANCE.getOutput().printf("HP:", ""+hp);
         Game.INSTANCE.getOutput().printf("Attack Power", ""+attack);
     }

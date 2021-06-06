@@ -6,7 +6,7 @@ public class ExitCommand extends Command {
 
     @Override
     public void execute(String arg) {
-        game.getOutput().println("Exiting Zork... Bye bye");
+        game.getOutput().println("\u001B[31mExiting Zork... Bye bye\u001B[0m");
         game.exit();
     }
 }

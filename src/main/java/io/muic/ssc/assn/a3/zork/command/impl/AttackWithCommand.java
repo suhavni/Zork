@@ -13,7 +13,12 @@ public class AttackWithCommand extends Command {
     protected static final Random RANDOM = new Random();
 
     private void attackMonster(Monster monster, String arg) {
-        game.getOutput().println("Trying to attack monster with " + arg);
+        game.getOutput().println("\u001B[33mTrying to attack monster with " + arg + "\u001B[0m");
+        if (ItemFactory.getItemType(arg) == null) {
+            game.getOutput().println("This item does not exist in the game");
+            return;
+        }
+
         Item item = ItemFactory.getItemType(arg).getItemInstance();
         if (game.getCheckPoint().getPlayer().getInventory().carriesItem(arg) && item instanceof Weapon) {
             Weapon weapon = (Weapon) item;
@@ -28,7 +33,7 @@ public class AttackWithCommand extends Command {
 
     private void monsterStrikesBack(Monster monster) {
         if (monster.getHp() <= 0) {
-            game.getOutput().println("Congratulations you killed the monster");
+            game.getOutput().println("\u001B[34mCongratulations you killed the monster\u001B[0m");
             game.getCheckPoint().getCurrentRoom().addMonster(null);
         } else {
             game.getOutput().println("Monster tries to attack back");
