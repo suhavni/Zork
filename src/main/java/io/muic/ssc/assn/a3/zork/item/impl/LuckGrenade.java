@@ -9,7 +9,7 @@ public class LuckGrenade extends Weapon {
     public LuckGrenade() {
         super();
         Random random = new Random();
-        if (random.nextInt(1000) < 999) {
+        if (random.nextInt(1000) < 750) {
             setAttackBonus(0);
             game.getOutput().println("You got unlucky :(");
         } else {

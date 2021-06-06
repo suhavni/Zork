@@ -47,6 +47,7 @@ public class Inventory {
         if (inventorySpaceTaken < inventoryCapacity) {
             inventorySpaceTaken++;
             inventory.put(item, inventory.getOrDefault(item, 0) + 1);
+            Game.INSTANCE.getCheckPoint().getCurrentRoom().removeItem(item);
         } else {
             Game.INSTANCE.getOutput().println("You have too many things in your inventory. Please drop something.");
         }
@@ -64,5 +65,13 @@ public class Inventory {
 
     public void updateInventoryCapacity() {
         inventoryCapacity++;
+    }
+
+    public int getSpaceTaken() {
+        return inventorySpaceTaken;
+    }
+
+    public int getCapacity() {
+        return inventoryCapacity;
     }
 }

@@ -12,6 +12,7 @@ public abstract class GameMap {
     protected String mapName;
     private File map;
     private Room spawnRoom;
+    private int monsterCount;
 
     protected void addMap(File file) {
         map = file;
@@ -67,5 +68,13 @@ public abstract class GameMap {
         for (ItemType itemType : copyFrom.getItems()) {
             copyTo.addItem(itemType.getItem());
         }
+    }
+
+    public void setMonsterCount(int count) {
+        monsterCount = count;
+    }
+
+    public int getMonsterCount() {
+        return monsterCount;
     }
 }

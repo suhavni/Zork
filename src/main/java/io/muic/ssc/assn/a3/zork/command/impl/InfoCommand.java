@@ -11,6 +11,8 @@ public class InfoCommand extends Command {
         game.getOutput().printf("HP:", "" + game.getCheckPoint().getPlayer().getHp());
         game.getOutput().printf("Max HP:", "" + game.getCheckPoint().getPlayer().getMaxHp());
         game.getOutput().printf("Attack Power:", "" + game.getCheckPoint().getPlayer().getAttack());
+        game.getOutput().printf("Storage:", "" + game.getCheckPoint().getPlayer().getInventory().getSpaceTaken() +
+                "/" + game.getCheckPoint().getPlayer().getInventory().getCapacity());
 
         game.getOutput().println("==========================");
         game.getOutput().println("\u001B[34mINVENTORY:\u001B[0m");

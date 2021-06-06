@@ -27,6 +27,7 @@ public class OneMap extends GameMap {
         for (String room : getRooms()) {
             copyMonstersAndItems(this.RoomLookup(room), map.RoomLookup(room));
         }
+        setMonsterCount(map.getMonsterCount());
     }
 
     private Room[] constructRooms() {
@@ -38,7 +39,7 @@ public class OneMap extends GameMap {
         Room R6 = new Room("R6");
         Room R7 = new Room("R7");
 
-        Room[] rooms = new Room[] {R1, R2, R3, R4, R5, R5, R6, R7};
+        Room[] rooms = new Room[] {R1, R2, R3, R4, R5, R6, R7};
         addRooms(rooms);
         return rooms;
     }
@@ -60,6 +61,7 @@ public class OneMap extends GameMap {
         rooms[3].addMonster(new Monster(600, 400));
         rooms[4].addMonster(new Monster(700, 400));
         rooms[6].addMonster(new Monster(800, 650));
+        setMonsterCount(4);
 
         rooms[0].addItem("bow");
         rooms[1].addItem("luck grenade");
