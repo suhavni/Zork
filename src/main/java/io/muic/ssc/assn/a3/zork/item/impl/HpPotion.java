@@ -6,8 +6,8 @@ public class HpPotion extends Item {
 
     @Override
     public boolean useItem() {
-        game.getOutput().println("Restoring " + 555 + " HP");
-        game.getCheckPoint().getPlayer().updateHp(555);
+        game.getOutput().println("Adding 5% to Max HP");
+        game.getCheckPoint().getPlayer().updateMaxHp(5);
         return true;
     }
 }

@@ -38,8 +38,8 @@ public enum Game {
         getOutput().println("This game has 3 specialties: " );
         getOutput().println("1. If you drop any item that's not a weapon, you will trigger its effect and the item will be gone forever," );
         getOutput().println("but if you drop an item that is a weapon, you will simply be placing the weapon in the room and you can take it back in the future." );
-        getOutput().println("2. Any monster you defeat will give you a HP potion.");
-        getOutput().println("3. Moving to various rooms is highly recommended. Everytime you switch a room, your HP and Max HP will increase.");
+        getOutput().println("2. Any monster you defeat will give you a HP potion that can increase your Max HP and increase your attack power.");
+        getOutput().println("3. Moving to various rooms is highly recommended. Everytime you switch a room, your HP will constantly increase until you reach Max HP.");
         getOutput().println("\u001B[31mNOTE: If you die, the QUIT command will automatically be triggered\u001B[0m");
     }
 

@@ -41,10 +41,13 @@ public class AttackWithCommand extends Command {
             game.getOutput().println("\u001B[32;7;1m Congratulations!! You killed the monster! \u001B[0m");
             game.getOutput().println("You received a hp potion");
             game.getCheckPoint().getPlayer().getInventory().addItemToInventory("hp potion");
+            game.getOutput().println("Your attack has been increased by 175");
+            game.getCheckPoint().getPlayer().addAttack(175);
             game.getCheckPoint().getCurrentRoom().addMonster(null);
             game.getCheckPoint().getMap().setMonsterCount(game.getCheckPoint().getMap().getMonsterCount()-1);
             if (game.getCheckPoint().getMap().getMonsterCount() == 0) {
-                game.getOutput().println("\u001B[32;7;1m All monsters in map killed. You have won! Type \u001B[35;7;1mquit\u001B[32;7;1m to end session \u001B[0m");
+                game.getOutput().println("\u001B[32;7;1m All monsters in map killed. You have won! Ending session\u001B[0m");
+                game.quit();
             }
         } else {
             game.getOutput().println("Monster's current HP is " + monster.getHp());

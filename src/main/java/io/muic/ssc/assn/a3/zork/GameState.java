@@ -63,8 +63,8 @@ public class GameState {
     public void move(Direction direction) {
         Room nextRoom = currentRoom.getNextRoom(direction);
         if (nextRoom != null) {
-            Game.INSTANCE.getOutput().println("Move successful. Adding 15% to HP and MAX HP.");
-            Game.INSTANCE.getCheckPoint().getPlayer().updateMaxHp(15);
+            Game.INSTANCE.getOutput().println("Move successful. Adding 750 HP.");
+            Game.INSTANCE.getCheckPoint().getPlayer().updateHp(750);
             currentRoom = nextRoom;
         } else {
             Game.INSTANCE.getOutput().println("Move unsuccessful. There is no door there.");
