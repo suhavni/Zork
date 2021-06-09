@@ -1,6 +1,4 @@
-package io.muic.ssc.assn.a3.zork.player;
-
-import io.muic.ssc.assn.a3.zork.Game;
+package io.muic.ssc.assn.a3.zork;
 
 import java.util.HashMap;
 import java.util.Map;

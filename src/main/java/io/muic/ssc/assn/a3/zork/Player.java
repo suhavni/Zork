@@ -1,4 +1,4 @@
-package io.muic.ssc.assn.a3.zork.player;
+package io.muic.ssc.assn.a3.zork;
 
 import static io.muic.ssc.assn.a3.zork.Game.INSTANCE;
 
