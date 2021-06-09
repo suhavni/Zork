@@ -1,6 +1,6 @@
 package io.muic.ssc.assn.a3.zork.item;
 
-public class Weapon extends Item {
+public abstract class Weapon extends Item {
     int attackBonus;
 
     public int getAttackBonus() {
